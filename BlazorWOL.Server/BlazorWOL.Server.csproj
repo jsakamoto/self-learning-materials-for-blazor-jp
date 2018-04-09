@@ -1,0 +1,17 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.App" />
+    <PackageReference Include="Microsoft.AspNetCore.Blazor.Server" Version="0.5.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\BlazorWOL.Client\BlazorWOL.Client.csproj" />
+    <ProjectReference Include="..\BlazorWOL.Shared\BlazorWOL.Shared.csproj" />
+  </ItemGroup>
+
+</Project>
