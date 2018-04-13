@@ -18,4 +18,16 @@
     <ProjectReference Include="..\BlazorWOL.Shared\BlazorWOL.Shared.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <BlazorGenerate Remove="Pages\DevicesComponent.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="Pages\DevicesComponent.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Pages\DevicesComponent.cshtml" />
+  </ItemGroup>
+
 </Project>
