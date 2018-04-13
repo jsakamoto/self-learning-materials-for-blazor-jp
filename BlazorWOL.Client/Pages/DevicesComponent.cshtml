@@ -1,18 +1,21 @@
-﻿<div class="device">
-    <div class="name">
-        <span class="caption">デバイス名</span>
-        <span class="value">@Device.Name</span>
+﻿@foreach (var device in Devices)
+{
+    <div class="device">
+        <div class="name">
+            <span class="caption">デバイス名</span>
+            <span class="value">@device.Name</span>
+        </div>
+        <div class="mac-address">
+            <span class="caption">MACアドレス</span>
+            <span class="value">@device.MACAddress</span>
+        </div>
     </div>
-    <div class="mac-address">
-        <span class="caption">MACアドレス</span>
-        <span class="value">@Device.MACAddress</span>
-    </div>
-</div>
+}
 
 @functions {
-    Device Device = new Device
-    {
-        Name = "Odin",
-        MACAddress = "00:15:5D:52:CA:B6"
+    Device[] Devices = new[]{
+        new Device {Name = "Odin", MACAddress = "00:15:5D:52:CA:B6"},
+        new Device {Name = "Thor", MACAddress = "00:0C:29:30:7D:5D"},
+        new Device {Name = "Fenrir", MACAddress = "00:50:56:01:43:86"}
     };
 }
