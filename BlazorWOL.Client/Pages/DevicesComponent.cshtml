@@ -1,4 +1,5 @@
-﻿@inject DeviceService DeviceService
+﻿@using System.Text.RegularExpressions
+@inject DeviceService DeviceService
 
 @foreach (var device in Devices)
 {
@@ -27,6 +28,9 @@
             <input type="text" bind="@NewDevice.MACAddress" />
         </span>
     </div>
+    <div class="error-message">
+        @ErrorMessage
+    </div>
     <div class="actions">
         <button class="button" onclick="@OnOK">OK</button>
     </div>
@@ -37,6 +41,8 @@
 
     Device NewDevice = new Device();
 
+    string ErrorMessage = "";
+
     protected override async Task OnInitAsync()
     {
         Devices = await DeviceService.GetDevicesAsync();
@@ -44,7 +50,27 @@
 
     async Task OnOK()
     {
+        // 入力内容チェック
+        if (string.IsNullOrWhiteSpace(NewDevice.Name))
+        {
+            ErrorMessage = "デバイス名を入力してください。";
+        }
+        else if (string.IsNullOrWhiteSpace(NewDevice.MACAddress))
+        {
+            ErrorMessage = "MACアドレスを入力してください。";
+        }
+        else if (!Regex.IsMatch(NewDevice.MACAddress, @"^[\da-f]{2}((:|-)[\da-f]{2}){5}$", RegexOptions.IgnoreCase))
+        {
+            ErrorMessage = "MACアドレスの書式が正しくありません。";
+        }
+        else ErrorMessage = "";
+        if (ErrorMessage != "") return;
+
+        // MACアドレスの正規化
+        NewDevice.MACAddress = NewDevice.MACAddress.Replace("-", ":").ToUpper();
+
         await DeviceService.AddDeviceAsync(NewDevice);
         NewDevice = new Device();
+        ErrorMessage = "";
     }
 }
