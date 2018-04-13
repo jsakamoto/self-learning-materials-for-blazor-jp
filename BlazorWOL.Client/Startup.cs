@@ -7,6 +7,7 @@ namespace BlazorWOL.Client
     {
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddSingleton<DeviceService>();
         }
 
         public void Configure(IBlazorApplicationBuilder app)
