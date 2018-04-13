@@ -1,0 +1,41 @@
+﻿@page "/addnew"
+@inject DeviceService DeviceService
+
+<div class="device">
+    <EditForm Model="@NewDevice" OnValidSubmit="@OnOK">
+
+        <DataAnnotationsValidator />
+
+        <div class="name">
+            <span class="caption">デバイス名</span>
+            <span class="input-field">
+                <InputText bind-value="@NewDevice.Name" />
+            </span>
+        </div>
+        <div class="mac-address">
+            <span class="caption">MACアドレス</span>
+            <span class="input-field">
+                <InputText bind-value="@NewDevice.MACAddress" />
+            </span>
+        </div>
+        <div class="error-message">
+            <ValidationSummary></ValidationSummary>
+        </div>
+        <div class="actions">
+            <button class="button" type="submit">OK</button>
+        </div>
+    </EditForm>
+</div>
+
+@functions {
+    Device NewDevice = new Device();
+
+    async Task OnOK()
+    {
+        // MACアドレスの正規化
+        NewDevice.MACAddress = NewDevice.MACAddress.Replace("-", ":").ToUpper();
+
+        await DeviceService.AddDeviceAsync(NewDevice);
+        NewDevice = new Device();
+    }
+}
