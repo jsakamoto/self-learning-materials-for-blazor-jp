@@ -1,5 +1,5 @@
 ﻿@inject DeviceService DeviceService
- 
+
 @foreach (var device in Devices)
 {
     <div class="device">
@@ -14,11 +14,37 @@
     </div>
 }
 
+<div class="device">
+    <div class="name">
+        <span class="caption">デバイス名</span>
+        <span class="input-field">
+            <input type="text" bind="@NewDevice.Name" />
+        </span>
+    </div>
+    <div class="mac-address">
+        <span class="caption">MACアドレス</span>
+        <span class="input-field">
+            <input type="text" bind="@NewDevice.MACAddress" />
+        </span>
+    </div>
+    <div class="actions">
+        <button class="button" onclick="@OnOK">OK</button>
+    </div>
+</div>
+
 @functions {
     IEnumerable<Device> Devices = new Device[0];
+
+    Device NewDevice = new Device();
 
     protected override async Task OnInitAsync()
     {
         Devices = await DeviceService.GetDevicesAsync();
+    }
+
+    async Task OnOK()
+    {
+        await DeviceService.AddDeviceAsync(NewDevice);
+        NewDevice = new Device();
     }
 }

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using BlazorWOL.Shared;
 
@@ -15,6 +16,11 @@ namespace BlazorWOL.Client
         public async Task<IEnumerable<Device>> GetDevicesAsync()
         {
             return await Task.FromResult(Devices);
+        }
+
+        public async Task AddDeviceAsync(Device device)
+        {
+            await Task.Run(() => Devices.Add(device));
         }
     }
 }
