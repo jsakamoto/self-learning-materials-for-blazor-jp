@@ -1,5 +1,6 @@
 ﻿@page "/addnew"
 @inject DeviceService DeviceService
+@inject Microsoft.AspNetCore.Components.Services.IUriHelper UriHelper
 @using System.Text.RegularExpressions
 
 <div class="device">
@@ -20,6 +21,7 @@
     </div>
     <div class="actions">
         <button class="button" onclick="@OnOK">OK</button>
+        <a class="button" href="/">キャンセル</a>
     </div>
 </div>
 
@@ -50,7 +52,6 @@
         NewDevice.MACAddress = NewDevice.MACAddress.Replace("-", ":").ToUpper();
 
         await DeviceService.AddDeviceAsync(NewDevice);
-        NewDevice = new Device();
-        ErrorMessage = "";
+        UriHelper.NavigateTo("/");
     }
 }
