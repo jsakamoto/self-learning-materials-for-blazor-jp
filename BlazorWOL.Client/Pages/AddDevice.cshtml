@@ -1,5 +1,6 @@
 ﻿@page "/addnew"
 @inject DeviceService DeviceService
+@inject Microsoft.AspNetCore.Components.Services.IUriHelper UriHelper
 
 <div class="device">
     <EditForm Model="@NewDevice" OnValidSubmit="@OnOK">
@@ -36,6 +37,6 @@
         NewDevice.MACAddress = NewDevice.MACAddress.Replace("-", ":").ToUpper();
 
         await DeviceService.AddDeviceAsync(NewDevice);
-        NewDevice = new Device();
+        UriHelper.NavigateTo("/");
     }
 }
