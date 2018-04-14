@@ -30,6 +30,7 @@
     <None Include="Pages\AddDevice.cshtml" />
     <None Include="Pages\DeviceForm.cshtml" />
     <None Include="Pages\DevicesComponent.cshtml" />
+    <None Include="Pages\EditDevice.cshtml" />
   </ItemGroup>
 
   <ItemGroup>
@@ -46,6 +47,14 @@
 
   <ItemGroup>
     <Content Remove="Pages\DeviceForm.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <BlazorGenerate Remove="Pages\EditDevice.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="Pages\EditDevice.cshtml" />
   </ItemGroup>
 
 </Project>

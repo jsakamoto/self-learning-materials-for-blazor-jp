@@ -1,5 +1,6 @@
 ﻿@page "/"
 @inject DeviceService DeviceService
+@inject Microsoft.AspNetCore.Blazor.Services.IUriHelper UriHelper
 
 @foreach (var device in Devices)
 {
@@ -11,6 +12,9 @@
         <div class="mac-address">
             <span class="caption">MACアドレス</span>
             <span class="value">@device.MACAddress</span>
+        </div>
+        <div class="actions">
+            <button class="button edit-button" onclick="@(() => OnClickEdit(device))">編集</button>
         </div>
     </div>
 }
@@ -24,5 +28,10 @@
     protected override async Task OnInitAsync()
     {
         Devices = await DeviceService.GetDevicesAsync();
+    }
+
+    void OnClickEdit(Device device)
+    {
+        UriHelper.NavigateTo($"/edit/{device.Guid}");
     }
 }
