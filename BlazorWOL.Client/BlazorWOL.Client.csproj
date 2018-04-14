@@ -28,6 +28,7 @@
 
   <ItemGroup>
     <None Include="Pages\AddDevice.cshtml" />
+    <None Include="Pages\DeviceForm.cshtml" />
     <None Include="Pages\DevicesComponent.cshtml" />
   </ItemGroup>
 
@@ -37,6 +38,14 @@
 
   <ItemGroup>
     <Content Remove="Pages\AddDevice.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <BlazorGenerate Remove="Pages\DeviceForm.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="Pages\DeviceForm.cshtml" />
   </ItemGroup>
 
 </Project>
