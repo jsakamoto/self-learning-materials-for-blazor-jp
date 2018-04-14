@@ -1,0 +1,57 @@
+﻿@using System.Text.RegularExpressions
+
+<div class="device">
+    <div class="name">
+        <span class="caption">デバイス名</span>
+        <span class="input-field">
+            <input type="text" name="name" bind="@Item.Name" />
+        </span>
+    </div>
+    <div class="mac-address">
+        <span class="caption">MACアドレス</span>
+        <span class="input-field">
+            <input type="text" name="name" bind="@Item.MACAddress" />
+        </span>
+    </div>
+    <div class="error-message">
+        @ErrorMessage
+    </div>
+    <div class="actions">
+        <button class="button" onclick="@OnOK">OK</button>
+        <a class="button" href="/">キャンセル</a>
+    </div>
+</div>
+
+@functions {
+    [Parameter]
+    Device Item { get; set; }
+
+    [Parameter]
+    Func<Device, Task> OnClickOK { get; set; }
+
+    string ErrorMessage = "";
+
+    async Task OnOK()
+    {
+        // 入力内容チェック
+        if (string.IsNullOrWhiteSpace(Item.Name))
+        {
+            ErrorMessage = "デバイス名を入力してください。";
+        }
+        else if (string.IsNullOrWhiteSpace(Item.MACAddress))
+        {
+            ErrorMessage = "MACアドレスを入力してください。";
+        }
+        else if (!Regex.IsMatch(Item.MACAddress, @"^[\da-f]{2}((:|-)[\da-f]{2}){5}$", RegexOptions.IgnoreCase))
+        {
+            ErrorMessage = "MACアドレスの書式が正しくありません。";
+        }
+        else ErrorMessage = "";
+        if (ErrorMessage != "") return;
+
+        // MACアドレスの正規化
+        Item.MACAddress = Item.MACAddress.Replace("-", ":").ToUpper();
+
+        await OnClickOK?.Invoke(Item);
+    }
+}
