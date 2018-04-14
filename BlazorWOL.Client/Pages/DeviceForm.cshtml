@@ -1,0 +1,44 @@
+﻿@using System.Text.RegularExpressions
+
+<div class="device">
+    <EditForm Model="@Item" OnValidSubmit="@OnOK">
+
+        <DataAnnotationsValidator />
+
+        <div class="name">
+            <span class="caption">デバイス名</span>
+            <span class="input-field">
+                <InputText bind-value="@Item.Name" />
+            </span>
+        </div>
+        <div class="mac-address">
+            <span class="caption">MACアドレス</span>
+            <span class="input-field">
+                <InputText bind-value="@Item.MACAddress" />
+            </span>
+        </div>
+        <div class="error-message">
+            <ValidationSummary></ValidationSummary>
+        </div>
+        <div class="actions">
+            <button class="button" type="submit">OK</button>
+            <a class="button" href="/">キャンセル</a>
+        </div>
+    </EditForm>
+</div>
+
+@functions {
+    [Parameter]
+    Device Item { get; set; }
+
+    [Parameter]
+    Func<Device, Task> OnClickOK { get; set; }
+
+    async Task OnOK()
+    {
+        // MACアドレスの正規化
+        Item.MACAddress = Item.MACAddress.Replace("-", ":").ToUpper();
+
+        await OnClickOK?.Invoke(Item);
+    }
+}
