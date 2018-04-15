@@ -1,6 +1,7 @@
 ﻿@page "/"
 @inject DeviceService DeviceService
 @inject Microsoft.AspNetCore.Blazor.Services.IUriHelper UriHelper
+@using Microsoft.JSInterop
 
 @foreach (var device in Devices)
 {
@@ -14,6 +15,7 @@
             <span class="value">@device.MACAddress</span>
         </div>
         <div class="actions">
+            <button class="button wakeup-button" onclick=@(() => OnClickWakeup(device))>電源ON</button>
             <button class="button edit-button" onclick="@(() => OnClickEdit(device))">編集</button>
         </div>
     </div>
@@ -33,5 +35,11 @@
     void OnClickEdit(Device device)
     {
         UriHelper.NavigateTo($"/edit/{device.Guid}");
+    }
+
+    async Task OnClickWakeup(Device device)
+    {
+        await DeviceService.WakeupAsync(device.Guid);
+        await JSRuntime.Current.InvokeAsync<object>("alert", "マジックパケットを送信しました。");
     }
 }
