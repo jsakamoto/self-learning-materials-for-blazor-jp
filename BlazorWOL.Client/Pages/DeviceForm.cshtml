@@ -1,5 +1,5 @@
 ﻿@using System.Text.RegularExpressions
-
+@using Microsoft.JSInterop
 <div class="device">
     <div class="name">
         <span class="caption">デバイス名</span>
@@ -17,6 +17,10 @@
         @ErrorMessage
     </div>
     <div class="actions">
+        @if (OnClickDelete != null)
+        {
+            <button class="button delete-button" onclick="@OnDelete">削除</button>
+        }
         <button class="button" onclick="@OnOK">OK</button>
         <a class="button" href="/">キャンセル</a>
     </div>
@@ -28,6 +32,9 @@
 
     [Parameter]
     Func<Device, Task> OnClickOK { get; set; }
+
+    [Parameter]
+    Func<Task> OnClickDelete { get; set; }
 
     string ErrorMessage = "";
 
@@ -53,5 +60,11 @@
         Item.MACAddress = Item.MACAddress.Replace("-", ":").ToUpper();
 
         await OnClickOK?.Invoke(Item);
+    }
+
+    async Task OnDelete()
+    {
+        var yes = await JSRuntime.Current.InvokeAsync<bool>("confirm", "削除してもよろしいですか?");
+        if (yes) await OnClickDelete?.Invoke();
     }
 }
