@@ -1,42 +1,51 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
+using System.Net.Http;
 using System.Threading.Tasks;
 using BlazorWOL.Shared;
+using Microsoft.AspNetCore.Components;
 
 namespace BlazorWOL.Client
 {
     public class DeviceService
     {
-        private List<Device> Devices { get; } = new List<Device> {
-            new Device {Name = "Odin", MACAddress = "00:15:5D:52:CA:B6"},
-            new Device {Name = "Thor", MACAddress = "00:0C:29:30:7D:5D"},
-            new Device {Name = "Fenrir", MACAddress = "00:50:56:01:43:86"}
-        };
+        private HttpClient HttpClient { get; }
+
+        public DeviceService(HttpClient httpClient)
+        {
+            HttpClient = httpClient;
+        }
 
         public async Task<IEnumerable<Device>> GetDevicesAsync()
         {
-            return await Task.FromResult(Devices);
+            return await HttpClient.GetJsonAsync<Device[]>("api/devices");
         }
 
         public async Task AddDeviceAsync(Device device)
         {
-            await Task.Run(() => Devices.Add(device));
+            await HttpClient.PostJsonAsync("api/devices", device);
         }
 
         public async Task<Device> GetDeviceAsync(Guid guid)
         {
-            return await Task.Run(() => Devices.FirstOrDefault(dev => dev.Guid == guid));
+            try
+            {
+                return await HttpClient.GetJsonAsync<Device>($"api/devices/{guid}");
+            }
+            catch (HttpRequestException e) when (e.Message == "404 (Not Found)")
+            {
+                return null;
+            }
         }
 
         public async Task UpdateDeviceAsync(Guid guid, Device device)
         {
-            await Task.Run(() =>
-            {
-                var updateTarget = Devices.FirstOrDefault(dev => dev.Guid == guid);
-                updateTarget.Name = device.Name;
-                updateTarget.MACAddress = device.MACAddress;
-            });
+            await HttpClient.PutJsonAsync($"api/devices/{guid}", device);
+        }
+
+        public async Task DeleteDeviceAsync(Guid guid)
+        {
+            await HttpClient.DeleteAsync($"api/devices/{guid}");
         }
     }
 }
