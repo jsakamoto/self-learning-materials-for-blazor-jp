@@ -31,6 +31,8 @@
     <None Include="Pages\DeviceForm.cshtml" />
     <None Include="Pages\DevicesComponent.cshtml" />
     <None Include="Pages\EditDevice.cshtml" />
+    <None Include="Pages\_ViewImports.cshtml" />
+    <None Include="Shared\MainLayout.cshtml" />
   </ItemGroup>
 
   <ItemGroup>
@@ -55,6 +57,22 @@
 
   <ItemGroup>
     <Content Remove="Pages\EditDevice.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <BlazorGenerate Remove="Pages\_ViewImports.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="Pages\_ViewImports.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <BlazorGenerate Remove="Shared\MainLayout.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="Shared\MainLayout.cshtml" />
   </ItemGroup>
 
 </Project>
