@@ -1,14 +1,17 @@
 ﻿// Copyright (c) .NET Foundation. All rights reserved.
 // Licensed under the Apache License, Version 2.0. See License.txt in the project root for license information.
 
+using System;
+using System.IO;
+using System.Linq;
+using System.Net.Mime;
+using System.Runtime.InteropServices;
 using Microsoft.AspNetCore.Blazor.Server;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.ResponseCompression;
 using Microsoft.Extensions.DependencyInjection;
 using Newtonsoft.Json.Serialization;
-using System.Linq;
-using System.Net.Mime;
 
 namespace BlazorWOL.Server
 {
@@ -30,6 +33,17 @@ namespace BlazorWOL.Server
                     MediaTypeNames.Application.Octet,
                     WasmMediaTypeNames.Application.Wasm,
                 });
+            });
+
+            services.AddSingleton(serviceProvider =>
+            {
+                var baseDir = Path.Combine($"{Path.DirectorySeparatorChar}", "etc", "blazorWOL");
+                if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+                    baseDir = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData), "BlazorWOL");
+                if (!Directory.Exists(baseDir)) Directory.CreateDirectory(baseDir);
+
+                var storagePath = Path.Combine(baseDir, "devices.json");
+                return new DeviceStorage(storagePath);
             });
         }
 
