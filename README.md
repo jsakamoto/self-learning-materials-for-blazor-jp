@@ -66,7 +66,7 @@ Blazor はまだ実験的プロジェクトとしての位置づけで、製品�
 本稿執筆時点で、本自習書による Blazor 開発を実践するにあたり必要な開発環境は下記のとおりです。
 
 - [.NET Core 2.1 SDK (2.1.300-preview2-008533 以降)](https://www.microsoft.com/net/download/dotnet-core/sdk-2.1.300-rc1)
-- [Visual Studio 2017 - 15.7 Preview5 以降](https://www.visualstudio.com/vs/preview)
+- [Visual Studio 2017 - 15.**7** 以降](https://www.visualstudio.com/downloads/)
     - "ASP.NET と Web 開発" ワークロードが選択されていること
 - 上記 Visual Studio に [Blazor Language Service 拡張](https://marketplace.visualstudio.com/items?itemName=aspnet.blazor)を追加
 - 以上の環境をインストールし利用可能な Windows OS
