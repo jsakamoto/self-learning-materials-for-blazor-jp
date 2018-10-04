@@ -14,7 +14,7 @@ Blazor はこの実行環境の上で SPA フレームワークを提供して�
 
 開発は Microsoft の ASP.NET 開発チームに引き継がれており、Apache 2.0 ライセンスのオープンソースソフトウェアとなっています。
 
-本稿執筆時点での Blazor は v.0.5.1 であり、また、**実験的プロジェクト**として位置づけされています。
+本稿執筆時点での Blazor は v.0.6.0 であり、また、**実験的プロジェクト**として位置づけされています。
 
 この自習書について
 ----------------------------------------
@@ -42,7 +42,7 @@ Blazor はまだ実験的プロジェクトとしての位置づけで、製品�
 
 自習書テキストは、PDF ファイルの形式でこの Zip アーカイブ内に収録しています。
 
-また、本リポジトリの v.0.5.1 ブランチには、自習書テキストで解説している1ステップを 1コミットとして履歴を記録したソースコードも収録してあります。
+また、本リポジトリの v.0.6.0 ブランチには、自習書テキストで解説している1ステップを 1コミットとして履歴を記録したソースコードも収録してあります。
 
 
 想定する本自習書の利用者層
@@ -65,8 +65,8 @@ Blazor はまだ実験的プロジェクトとしての位置づけで、製品�
 
 本稿執筆時点で、本自習書による Blazor 開発を実践するにあたり必要な開発環境は下記のとおりです。
 
-- [.NET Core 2.1 SDK (2.1.300 以降)](https://www.microsoft.com/net/download/dotnet-core/sdk-2.1.300)
-- [Visual Studio 2017 - 15.**7** 以降](https://www.visualstudio.com/downloads/)
+- [.NET Core 2.1 SDK (2.1.402 以降)](https://www.microsoft.com/net/download)
+- [Visual Studio 2017 - 15.**8** 以降](https://www.visualstudio.com/downloads/)
     - "ASP.NET と Web 開発" ワークロードが選択されていること
 - 上記 Visual Studio に [Blazor Language Service 拡張](https://marketplace.visualstudio.com/items?itemName=aspnet.blazor)を追加
 - 以上の環境をインストールし利用可能な Windows OS
