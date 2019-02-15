@@ -14,7 +14,7 @@ Blazor はこの実行環境の上で SPA フレームワークを提供して�
 
 開発は Microsoft の ASP.NET 開発チームに引き継がれており、Apache 2.0 ライセンスのオープンソースソフトウェアとなっています。
 
-本稿執筆時点での Blazor は v.0.7.0 であり、また、**実験的プロジェクト**として位置づけされています。
+本稿執筆時点での Blazor は v.0.8.0 であり、また、**実験的プロジェクト**として位置づけされています。
 
 この自習書について
 ----------------------------------------
@@ -42,7 +42,7 @@ Blazor はまだ実験的プロジェクトとしての位置づけで、製品�
 
 自習書テキストは、PDF ファイルの形式でこの Zip アーカイブ内に収録しています。
 
-また、本リポジトリの v.0.7.0 ブランチには、自習書テキストで解説している1ステップを 1コミットとして履歴を記録したソースコードも収録してあります。
+また、本リポジトリの v.0.8.0 ブランチには、自習書テキストで解説している1ステップを 1コミットとして履歴を記録したソースコードも収録してあります。
 
 
 想定する本自習書の利用者層
@@ -65,14 +65,23 @@ Blazor はまだ実験的プロジェクトとしての位置づけで、製品�
 
 本稿執筆時点で、本自習書による Blazor 開発を実践するにあたり必要な開発環境は下記のとおりです。
 
-- [.NET Core 2.1 SDK (2.1.500 以降)](https://www.microsoft.com/net/download)
-- [Visual Studio 2017 - 15.**9** 以降](https://www.visualstudio.com/downloads/)
+- [.NET Core 2.2 SDK](https://dotnet.microsoft.com/download/dotnet-core/2.2)
+- [.NET Core 3.0 Preview 2 SDK (3.0.100-preview-010184)](https://dotnet.microsoft.com/download/dotnet-core/3.0)
+- [Visual Studio 2019 - Preview 2 以降](https://visualstudio.microsoft.com/vs/preview/)
     - "ASP.NET と Web 開発" ワークロードが選択されていること
 - 上記 Visual Studio に [Blazor Language Service 拡張](https://marketplace.visualstudio.com/items?itemName=aspnet.blazor)を追加
 - 以上の環境をインストールし利用可能な Windows OS
 
-> ※1 - Visual Studio 2017 は、無償利用可能な(但しライセンス条項に違反しない場合) Community Edition で可。  
-> ※2 - Visual Studio 2017 は、複数のインスタンスを、互いの干渉なくインストールして利用することが可能です。
+なお、本自習書では Windows OS 上で Visual Studio 2019 Preview 2 以降を使っての手順で説明しております が、Blazor アプリ開発にあたっては、最低限、 
+
+- [.NET Core 2.2 SDK](https://dotnet.microsoft.com/download/dotnet-core/2.2)
+- [.NET Core 3.0 Preview 2 SDK (3.0.100-preview-010184)](https://dotnet.microsoft.com/download/dotnet-core/3.0)
+- および任意のテキストエディタ 
+
+さえあれば、"dotnet" CLI (Command Line Interface) を用いて、Linux 各種ディストリビューションや macOS 上でも実践可能です (本書では割愛いたします)。 
+
+> ※1 - Visual Studio 2019 は、無償利用可能な(但しライセンス条項に違反しない場合) Community Edition で可。  
+> ※2 - Visual Studio は、複数のバージョンやインスタンスを、ひとつの OS 上に互いの干渉なくいくつもインストールして使用することが可能です。
 
 
 ライセンス
