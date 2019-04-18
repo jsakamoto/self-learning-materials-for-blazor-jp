@@ -67,7 +67,7 @@ Blazor はまだ実験的プロジェクトとしての位置づけで、製品�
 
 - [.NET Core 2.2 SDK](https://dotnet.microsoft.com/download/dotnet-core/2.2)
 - [.NET Core 3.0 Preview 3 SDK (3.0.100-preview3-010431)](https://dotnet.microsoft.com/download/dotnet-core/3.0)
-- [Visual Studio 2019 - Preview 4 以降](https://visualstudio.microsoft.com/vs/preview/)
+- [Visual Studio 2019 - 16.0 Preview 1 以降](https://visualstudio.microsoft.com/vs/preview/)
     - "ASP.NET と Web 開発" ワークロードが選択されていること
     - "VS Live Share - Preview" 拡張が有効であること
 - 上記 Visual Studio に [Blazor 拡張](https://marketplace.visualstudio.com/items?itemName=aspnet.blazor)を追加
@@ -104,7 +104,7 @@ Blazor はまだ実験的プロジェクトとしての位置づけで、製品�
 関連リソース
 ----------------------------------------
 
-- Blazor 公式 GitHub リポジトリ - [https://github.com/aspnet/Blazor](https://github.com/aspnet/Blazor)
+- Blazor 公式 GitHub リポジトリ - [https://github.com/aspnet/AspNetCore/tree/master/src/Components](https://github.com/aspnet/AspNetCore/tree/master/src/Components)
 - Blazor 公式サイト - [https://blazor.net/](https://blazor.net/)
     - "Get started with Blazor" - [https://blazor.net/docs/get-started.html](https://blazor.net/docs/get-started.html)
 - Blazor 学習サイト(英語) "Learn Blazor" - [https://learn-blazor.com/](https://learn-blazor.com/)
