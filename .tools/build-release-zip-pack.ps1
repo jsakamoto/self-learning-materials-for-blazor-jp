@@ -2,7 +2,7 @@
 $baseBranch = git branch | 
     % { $_.Trim() } | 
     where { $_ -match "^v\.\d+\.\d+"} | 
-    sort {[Version]$_.Replace('v.', '')} -Descending | 
+    sort {[Version]([regex]::Replace($_.Replace('v.', ''), "[a-z]$", { "." + [int][char]$args.value }))} -Descending | 
     select -First 1
 
 $rootDir = Join-Path $PSScriptRoot ".." -Resolve
