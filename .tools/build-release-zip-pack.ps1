@@ -1,9 +1,5 @@
 ﻿# Get latest branch name which starts with "v.x.x..."
-$baseBranch = git branch | 
-    % { $_.Trim() } | 
-    where { $_ -match "^v\.\d+\.\d+"} | 
-    sort {[Version]([regex]::Replace($_.Replace('v.', ''), "[a-z]$", { "." + [int][char]$args.value }))} -Descending | 
-    select -First 1
+$baseBranch = "v.3.0.0-preview4"
 
 $rootDir = Join-Path $PSScriptRoot ".." -Resolve
 pushd $rootDir
