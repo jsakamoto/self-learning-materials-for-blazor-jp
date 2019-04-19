@@ -1,8 +1,44 @@
 ﻿@page "/edit/{DeviceId:guid}"
+@inject DeviceService DeviceService
+@inject Microsoft.AspNetCore.Components.IUriHelper UriHelper
 
-<p>Device Id is @DeviceId</p>
+@if (initialized == true)
+{
+    @if (Item != null)
+    {
+        <DeviceForm Item="Item" OnClickOK="OnClickOK"></DeviceForm>
+    }
+    else
+    {
+        <p class="error-message">デバイス情報が見つかりません。</p>
+    }
+}
 
 @code {
     [Parameter]
     Guid DeviceId { get; set; }
+
+    bool initialized = false;
+
+    Device Item;
+
+    protected override async Task OnInitAsync()
+    {
+        var device = await DeviceService.GetDeviceAsync(DeviceId);
+        if (device != null)
+        {
+            Item = new Device
+            {
+                Name = device.Name,
+                MACAddress = device.MACAddress
+            };
+        }
+        initialized = true;
+    }
+
+    async Task OnClickOK(Device editedDevice)
+    {
+        await DeviceService.UpdateDeviceAsync(DeviceId, editedDevice);
+        UriHelper.NavigateTo("/");
+    }
 }
