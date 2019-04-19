@@ -15,10 +15,10 @@
 }
 
 @code {
-    IEnumerable<Device> Devices;
+    IEnumerable<Device> Devices = new Device[0];
 
-    protected override void OnInit()
+    protected override async Task OnInitAsync()
     {
-        Devices = DeviceService.GetDevices();
+        Devices = await DeviceService.GetDevicesAsync();
     }
 }
