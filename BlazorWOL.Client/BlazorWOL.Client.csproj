@@ -18,7 +18,6 @@
 
   <ItemGroup>
     <None Remove="**\.gitkeep" />
-    <Folder Include="Pages\" />
   </ItemGroup>
 
 </Project>
