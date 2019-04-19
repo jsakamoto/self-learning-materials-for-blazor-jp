@@ -15,21 +15,29 @@
 }
 
 <div class="device">
-    <div class="name">
-        <span class="caption">デバイス名</span>
-        <span class="input-field">
-            <input type="text" bind="@NewDevice.Name" />
-        </span>
-    </div>
-    <div class="mac-address">
-        <span class="caption">MACアドレス</span>
-        <span class="input-field">
-            <input type="text" bind="@NewDevice.MACAddress" />
-        </span>
-    </div>
-    <div class="actions">
-        <button class="button" onclick="@OnOK">OK</button>
-    </div>
+    <EditForm Model="@NewDevice" OnValidSubmit="@OnOK">
+
+        <DataAnnotationsValidator />
+
+        <div class="name">
+            <span class="caption">デバイス名</span>
+            <span class="input-field">
+                <input type="text" bind="@NewDevice.Name" />
+            </span>
+        </div>
+        <div class="mac-address">
+            <span class="caption">MACアドレス</span>
+            <span class="input-field">
+                <input type="text" bind="@NewDevice.MACAddress" />
+            </span>
+        </div>
+        <div class="error-message">
+            <ValidationSummary></ValidationSummary>
+        </div>
+        <div class="actions">
+            <button class="button">OK</button>
+        </div>
+    </EditForm>
 </div>
 
 @functions {
@@ -44,6 +52,9 @@
 
     async Task OnOK()
     {
+        // MACアドレスの正規化
+        NewDevice.MACAddress = NewDevice.MACAddress.Replace("-", ":").ToUpper();
+
         await DeviceService.AddDeviceAsync(NewDevice);
         NewDevice = new Device();
     }
