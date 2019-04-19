@@ -2,42 +2,12 @@
 @inject DeviceService DeviceService
 @inject Microsoft.AspNetCore.Components.IUriHelper UriHelper
 
-<div class="device">
-    <EditForm Model="NewDevice" OnValidSubmit="OnOK">
-
-        <DataAnnotationsValidator />
-
-        <div class="name">
-            <span class="caption">デバイス名</span>
-            <span class="input-field">
-                <input type="text" @bind="NewDevice.Name" />
-            </span>
-        </div>
-        <div class="mac-address">
-            <span class="caption">MACアドレス</span>
-            <span class="input-field">
-                <input type="text" @bind="NewDevice.MACAddress" />
-            </span>
-        </div>
-        <div class="error-message">
-            <ValidationSummary></ValidationSummary>
-        </div>
-        <div class="actions">
-            <button class="button">OK</button>
-            <a class="button" href="/">キャンセル</a>
-        </div>
-    </EditForm>
-</div>
+<DeviceForm Item="new Device()" OnClickOK="OnClickOK"></DeviceForm>
 
 @code {
-    Device NewDevice = new Device();
-
-    async Task OnOK()
+    async Task OnClickOK(Device newDevice)
     {
-        // MACアドレスの正規化
-        NewDevice.MACAddress = NewDevice.MACAddress.Replace("-", ":").ToUpper();
-
-        await DeviceService.AddDeviceAsync(NewDevice);
+        await DeviceService.AddDeviceAsync(newDevice);
         UriHelper.NavigateTo("/");
     }
 }
