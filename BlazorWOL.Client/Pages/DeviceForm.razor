@@ -1,4 +1,6 @@
-﻿<div class="device">
+﻿@inject IJSRuntime JSRuntime
+
+<div class="device">
     <EditForm Model="@Item" OnValidSubmit="@OnOK">
 
         <DataAnnotationsValidator />
@@ -19,6 +21,10 @@
             <ValidationSummary></ValidationSummary>
         </div>
         <div class="actions">
+            @if (OnClickDelete != null)
+            {
+                <button class="button delete-button" type="button" @onclick="@OnDelete">削除</button>
+            }
             <button class="button">OK</button>
             <a class="button" href="/">キャンセル</a>
         </div>
@@ -32,11 +38,23 @@
     [Parameter]
     Func<Device, Task> OnClickOK { get; set; }
 
+    [Parameter]
+    Func<Task> OnClickDelete { get; set; }
+
     async Task OnOK()
     {
         // MACアドレスの正規化
         Item.MACAddress = Item.MACAddress.Replace("-", ":").ToUpper();
 
         await OnClickOK?.Invoke(Item);
+    }
+
+    async Task OnDelete()
+    {
+        var yes = await JSRuntime.InvokeAsync<bool>("confirm", "削除してもよろしいですか?");
+        if (yes)
+        {
+            await OnClickDelete?.Invoke();
+        }
     }
 }
