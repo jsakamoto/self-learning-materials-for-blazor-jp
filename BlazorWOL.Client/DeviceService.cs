@@ -47,5 +47,10 @@ namespace BlazorWOL.Client
         {
             await HttpClient.DeleteAsync($"api/devices/{guid}");
         }
+
+        public async Task WakeupAsync(Guid guid)
+        {
+            await HttpClient.PostJsonAsync($"api/devices/{guid}/wakeup", "");
+        }
     }
 }
