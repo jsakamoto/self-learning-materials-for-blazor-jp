@@ -14,7 +14,7 @@ Blazor はこの実行環境の上で SPA フレームワークを提供して�
 
 開発は Microsoft の ASP.NET 開発チームに引き継がれており、Apache 2.0 ライセンスのオープンソースソフトウェアとなっています。
 
-本稿執筆時点での Blazor は v.3.0.0 Preview 5 であり、まだ正式リリースの前です。
+本稿執筆時点での Blazor は v.3.0.0 Preview 6 であり、まだ正式リリースの前です。
 
 この自習書について
 ----------------------------------------
@@ -42,7 +42,7 @@ Blazor、特に本自習書で取り上げている、ブラウザの WebAssembl
 
 自習書テキストは、PDF ファイルの形式でこの Zip アーカイブ内に収録しています。
 
-また、本リポジトリの v.3.0.0-preview5 ブランチには、自習書テキストで解説している1ステップを 1コミットとして履歴を記録したソースコードも収録してあります。
+また、本リポジトリの v.3.0.0-preview6 ブランチには、自習書テキストで解説している1ステップを 1コミットとして履歴を記録したソースコードも収録してあります。
 
 
 想定する本自習書の利用者層
@@ -65,24 +65,24 @@ Blazor、特に本自習書で取り上げている、ブラウザの WebAssembl
 
 本稿執筆時点で、本自習書による Blazor 開発を実践するにあたり必要な開発環境は下記のとおりです。
 
-- [.NET Core 3.0 Preview 5 SDK (3.0.100-preview5-011568)](https://dotnet.microsoft.com/download/dotnet-core/3.0)
-- [Visual Studio 2019 - 16.1.0 Preview 3.0 以降](https://visualstudio.microsoft.com/vs/preview/)
+- [.NET Core 3.0 Preview 6 SDK (3.0.100-preview6-012264)](https://dotnet.microsoft.com/download/dotnet-core/3.0)
+- [Visual Studio 2019 - 16.2.0 Preview 2.0 以降](https://visualstudio.microsoft.com/vs/preview/)
     - "ASP.NET と Web 開発" ワークロードが選択されていること
 - 上記 Visual Studio に [Blazor 拡張](https://marketplace.visualstudio.com/items?itemName=aspnet.blazor)を追加
 - 以上の環境をインストールし利用可能な Windows OS
 
-なお、本自習書では Windows OS 上で Visual Studio 2019 16.1.0 Preview 1.0 以降を使っての手順で説明しておりますが、Blazor アプリ開発にあたっては、最低限、 
+なお、本自習書では Windows OS 上で Visual Studio 2019 16.2.0 Preview 2.0 以降を使っての手順で説明しておりますが、Blazor アプリ開発にあたっては、最低限、 
 
-- [.NET Core 3.0 Preview 5 SDK (3.0.100-preview5-011568)](https://dotnet.microsoft.com/download/dotnet-core/3.0)
+- [.NET Core 3.0 Preview 6 SDK (3.0.100-preview6-012264)](https://dotnet.microsoft.com/download/dotnet-core/3.0)
 - および任意のテキストエディタ 
 
 さえあれば、"dotnet" CLI (Command Line Interface) を用いて、Linux 各種ディストリビューションや macOS 上でも実践可能です。
 
-特にテキストエディタとして、**["C# for Visual Studio Code" 拡張 v.1.19以上](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp) をインストールしてあるVisual Studio Code** を使用する場合は、本自習書で説明しているようなVisual Studio 2019 と同等の開発支援が得られます。
+特にテキストエディタとして、**Visual Studio Code** を用い、これに **["C# for Visual Studio Code" 拡張 v.1.19以上](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp)** をインストールして使用する場合は、本自習書で説明しているようなVisual Studio 2019 と同等の開発支援が得られます。
 
- 本自習書では Windows OS 上で Visual Studio 2019 16.1 Preview 3 以降を使っての手順で説明します。
+ 本自習書では Windows OS 上で Visual Studio 2019 16.2 Preview 2 以降を使っての手順で説明します。
 
-> ※1 - Visual Studio 2019 は、無償利用可能な(但しライセンス条項に違反しない場合) Community Edition で可。  
+> ※1 - Visual Studio 2019 は、無償利用可能な (但しライセンス条項に違反しない場合) Community Edition で可。  
 > ※2 - Visual Studio は、複数のバージョンやインスタンスを、ひとつの OS 上に互いの干渉なくいくつもインストールして使用することが可能です。
 
 
@@ -108,4 +108,4 @@ Blazor、特に本自習書で取り上げている、ブラウザの WebAssembl
 - Blazor 公式 GitHub リポジトリ - [https://github.com/aspnet/AspNetCore/tree/master/src/Components](https://github.com/aspnet/AspNetCore/tree/master/src/Components)
 - Blazor 公式サイト - [https://blazor.net/](https://blazor.net/)
     - "Get started with Blazor" - [https://blazor.net/docs/get-started.html](https://blazor.net/docs/get-started.html)
-- Blazor 学習サイト(英語) "Learn Blazor" - [https://learn-blazor.com/](https://learn-blazor.com/)
+- Blazor 関連リンク集 (英語) "Awesome Blazor" - [https://github.com/AdrienTorris/awesomeblazor](https://github.com/AdrienTorris/awesomeblazor#awesome-blazor-) 
