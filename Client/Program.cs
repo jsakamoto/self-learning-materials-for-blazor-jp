@@ -12,6 +12,7 @@ namespace BlazorWOL.Client
             builder.RootComponents.Add<App>("app");
 
             builder.Services.AddBaseAddressHttpClient();
+            builder.Services.AddSingleton<DeviceService>();
 
             await builder.Build().RunAsync();
         }
