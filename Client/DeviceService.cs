@@ -16,5 +16,10 @@ namespace BlazorWOL.Client
         {
             return await Task.FromResult(Devices);
         }
+
+        public async Task AddDeviceAsync(Device device)
+        {
+            await Task.Run(() => Devices.Add(device));
+        }
     }
 }
