@@ -54,7 +54,7 @@ ls .git* -Recurse | del
 popd
 
 # Create Bolerplate Zip file.
-$boilerplateSrcPath = Join-Path $sourceCodeDir $stepDirs[0] | Join-Path -ChildPath "*.*"
+$boilerplateSrcPath = Join-Path $sourceCodeDir $stepDirs[0] | Join-Path -ChildPath "*"
 $boilerplateZipPath = Join-Path $baseDir "BlazorWOL-Step01-Boilerplate.zip"
 Compress-Archive $boilerplateSrcPath $boilerplateZipPath -Force
 
