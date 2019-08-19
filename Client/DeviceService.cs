@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using BlazorWOL.Shared;
 
@@ -20,6 +22,21 @@ namespace BlazorWOL.Client
         public async Task AddDeviceAsync(Device device)
         {
             await Task.Run(() => Devices.Add(device));
+        }
+
+        public async Task<Device> GetDeviceAsync(Guid id)
+        {
+            return await Task.Run(() => Devices.FirstOrDefault(dev => dev.Id == id));
+        }
+
+        public async Task UpdateDeviceAsync(Guid id, Device device)
+        {
+            await Task.Run(() =>
+            {
+                var updateTarget = Devices.FirstOrDefault(dev => dev.Id == id);
+                updateTarget.Name = device.Name;
+                updateTarget.MACAddress = device.MACAddress;
+            });
         }
     }
 }
