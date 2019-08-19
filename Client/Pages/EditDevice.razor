@@ -6,7 +6,7 @@
 {
     @if (Item != null)
     {
-        <DeviceForm Item="Item" OnClickOK="OnClickOK"></DeviceForm>
+        <DeviceForm Item="Item" OnClickOK="OnClickOK" OnClickDelete="OnClickDelete"></DeviceForm>
     }
     else
     {
@@ -39,6 +39,12 @@
     async Task OnClickOK(Device editedDevice)
     {
         await DeviceService.UpdateDeviceAsync(DeviceId, editedDevice);
+        NavigationManager.NavigateTo("/");
+    }
+
+    async Task OnClickDelete()
+    {
+        await DeviceService.DeleteDeviceAsync(DeviceId);
         NavigationManager.NavigateTo("/");
     }
 }
