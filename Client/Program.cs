@@ -9,6 +9,7 @@ namespace BlazorWOL.Client
         public static async Task Main(string[] args)
         {
             var builder = WebAssemblyHostBuilder.CreateDefault(args);
+            builder.Services.AddSingleton<DeviceService>();
             builder.RootComponents.Add<App>("app");
 
             await builder.Build().RunAsync();
