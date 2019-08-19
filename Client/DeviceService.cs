@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using BlazorWOL.Shared;
 
 namespace BlazorWOL.Client
@@ -11,9 +12,9 @@ namespace BlazorWOL.Client
             new Device {Name = "Fenrir", MACAddress = "00:50:56:01:43:86"}
         };
 
-        public IEnumerable<Device> GetDevices()
+        public async Task<IEnumerable<Device>> GetDevicesAsync()
         {
-            return Devices;
+            return await Task.FromResult(Devices);
         }
     }
 }
