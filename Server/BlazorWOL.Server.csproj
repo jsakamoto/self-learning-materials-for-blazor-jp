@@ -6,6 +6,7 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Blazor.Server" Version="3.2.0-preview1.20073.1" />
+    <PackageReference Include="WakeOnLAN" Version="1.6.0" />
   </ItemGroup>
 
   <ItemGroup>
