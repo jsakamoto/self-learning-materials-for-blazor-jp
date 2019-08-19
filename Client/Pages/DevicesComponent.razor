@@ -1,0 +1,18 @@
+﻿<div class="device">
+    <div class="name">
+        <span class="caption">デバイス名</span>
+        <span class="value">@Device.Name</span>
+    </div>
+    <div class="mac-address">
+        <span class="caption">MACアドレス</span>
+        <span class="value">@Device.MACAddress</span>
+    </div>
+</div>
+
+@code {
+    Device Device = new Device
+    {
+        Name = "Odin",
+        MACAddress = "00:15:5D:52:CA:B6"
+    };
+}
