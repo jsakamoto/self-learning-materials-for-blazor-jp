@@ -1,0 +1,1 @@
+### Blazor v.3.0.0 Preview 9 に対応した [3.0.0-preview9](https://github.com/jsakamoto/self-learning-materials-for-blazor-jp/releases/tag/doc%2F3.0.0-preview9) をリリースしています。そちらをご利用ください。
