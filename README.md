@@ -14,7 +14,7 @@ Blazor はこの実行環境の上で SPA フレームワークを提供して�
 
 開発は Microsoft の ASP.NET 開発チームに引き継がれており、Apache 2.0 ライセンスのオープンソースソフトウェアとなっています。
 
-本稿執筆時点での Blazor WebAssembly (client-side) 版 Blazor は v.3.2.0 Preview 1 であり、まだ正式リリースの前です。
+本稿執筆時点での Blazor WebAssembly (client-side) 版 Blazor は v.3.2.0 Preview 3 であり、正式リリースは 2020 年5月が予定されています。
 
 この自習書について
 ----------------------------------------
@@ -42,7 +42,7 @@ Blazor、特に本自習書で取り上げている、ブラウザの WebAssembl
 
 自習書テキストは、PDF ファイルの形式でこの Zip アーカイブ内に収録しています。
 
-また、本リポジトリの [v.3.2.0-preview1.20073.1 ブランチ](https://github.com/jsakamoto/self-learning-materials-for-blazor-jp/commits/v.3.2.0-preview1.20073.1)には、自習書テキストで解説している1ステップを 1コミットとして履歴を記録したソースコードも収録してあります。
+また、本リポジトリの [v.3.2.0-preview3.20168.3 ブランチ](https://github.com/jsakamoto/self-learning-materials-for-blazor-jp/commits/v.3.2.0-preview3.20168.3)には、自習書テキストで解説している1ステップを 1コミットとして履歴を記録したソースコードも収録してあります。
 
 
 想定する本自習書の利用者層
@@ -65,14 +65,14 @@ Blazor、特に本自習書で取り上げている、ブラウザの WebAssembl
 
 本稿執筆時点で、本自習書による Blazor 開発を実践するにあたり必要な開発環境は下記のとおりです。
 
-- [.NET Core 3.1 SDK (3.1.101)](https://dotnet.microsoft.com/download/dotnet-core/3.1)
-- [Visual Studio 2019 - 16.5.0 Preview 2.0 以降](https://visualstudio.microsoft.com/vs/preview/)
+- [.NET Core 3.1 SDK (3.1.201 かそれ以降)](https://dotnet.microsoft.com/download/dotnet-core/3.1)
+- [Visual Studio 2019 - 16.6.0 Preview 2.1 以降](https://visualstudio.microsoft.com/vs/preview/)
     - "ASP.NET と Web 開発" ワークロードが選択されていること
 - 以上の環境をインストールし利用可能な Windows OS
 
-なお、本自習書では Windows OS 上で Visual Studio 2019 16.5.0 Preview 2.0 以降を使っての手順で説明しておりますが、Blazor アプリ開発にあたっては、最低限、 
+なお、本自習書では Windows OS 上で Visual Studio 2019 16.6.0 Preview 2.1 以降を使っての手順で説明しておりますが、Blazor アプリ開発にあたっては、最低限、 
 
-- [.NET Core 3.1 SDK (3.0.101)](https://dotnet.microsoft.com/download/dotnet-core/3.1)
+- [.NET Core 3.1 SDK (3.0.201 かそれ以降)](https://dotnet.microsoft.com/download/dotnet-core/3.1)
 - および任意のテキストエディタ 
 
 さえあれば、"dotnet" CLI (Command Line Interface) を用いて、Linux 各種ディストリビューションや macOS 上でも実践可能です。
