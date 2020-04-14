@@ -1,1 +1,1 @@
-### Blazor v.3.2.0 Preview 1 20073.1 に対応した [3.2.0-preview1.20073.1](https://github.com/jsakamoto/self-learning-materials-for-blazor-jp/releases/tag/doc%2F3.2.0-preview1.20073.1b) をリリースしています。そちらをご利用ください。
+### Blazor v.3.2.0 Preview 3.20168.3 に対応した [3.2.0-preview3.20168.3](https://github.com/jsakamoto/self-learning-materials-for-blazor-jp/releases/tag/doc%2F3.2.0-preview3.20168.3) をリリースしています。そちらをご利用ください。
