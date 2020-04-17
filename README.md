@@ -14,7 +14,7 @@ Blazor はこの実行環境の上で SPA フレームワークを提供して�
 
 開発は Microsoft の ASP.NET 開発チームに引き継がれており、Apache 2.0 ライセンスのオープンソースソフトウェアとなっています。
 
-本稿執筆時点での Blazor WebAssembly (client-side) 版 Blazor は v.3.2.0 Preview 3 であり、正式リリースは 2020 年5月が予定されています。
+本稿執筆時点での Blazor WebAssembly (client-side) 版 Blazor は v.3.2.0 Preview 4 であり、正式リリースは 2020 年5月が予定されています。
 
 この自習書について
 ----------------------------------------
@@ -42,7 +42,7 @@ Blazor、特に本自習書で取り上げている、ブラウザの WebAssembl
 
 自習書テキストは、PDF ファイルの形式でこの Zip アーカイブ内に収録しています。
 
-また、本リポジトリの [v.3.2.0-preview3.20168.3 ブランチ](https://github.com/jsakamoto/self-learning-materials-for-blazor-jp/commits/v.3.2.0-preview3.20168.3)には、自習書テキストで解説している1ステップを 1コミットとして履歴を記録したソースコードも収録してあります。
+また、本リポジトリの [v.3.2.0-preview4.20210.8 ブランチ](https://github.com/jsakamoto/self-learning-materials-for-blazor-jp/commits/v.3.2.0-preview4.20210.8)には、自習書テキストで解説している1ステップを 1コミットとして履歴を記録したソースコードも収録してあります。
 
 
 想定する本自習書の利用者層
@@ -66,11 +66,11 @@ Blazor、特に本自習書で取り上げている、ブラウザの WebAssembl
 本稿執筆時点で、本自習書による Blazor 開発を実践するにあたり必要な開発環境は下記のとおりです。
 
 - [.NET Core 3.1 SDK (3.1.201 かそれ以降)](https://dotnet.microsoft.com/download/dotnet-core/3.1)
-- [Visual Studio 2019 - 16.6.0 Preview 2.1 以降](https://visualstudio.microsoft.com/vs/preview/)
+- [Visual Studio 2019 - 16.6.0 Preview 3 以降](https://visualstudio.microsoft.com/vs/preview/)
     - "ASP.NET と Web 開発" ワークロードが選択されていること
 - 以上の環境をインストールし利用可能な Windows OS
 
-なお、本自習書では Windows OS 上で Visual Studio 2019 16.6.0 Preview 2.1 以降を使っての手順で説明しておりますが、Blazor アプリ開発にあたっては、最低限、 
+なお、本自習書では Windows OS 上で Visual Studio 2019 16.6.0 Preview 3 以降を使っての手順で説明しておりますが、Blazor アプリ開発にあたっては、最低限、 
 
 - [.NET Core 3.1 SDK (3.0.201 かそれ以降)](https://dotnet.microsoft.com/download/dotnet-core/3.1)
 - および任意のテキストエディタ 
@@ -79,7 +79,7 @@ Blazor、特に本自習書で取り上げている、ブラウザの WebAssembl
 
 特にテキストエディタとして、**Visual Studio Code** を用い、これに **["C# for Visual Studio Code" 拡張 v.1.21以上](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp)** をインストールして使用する場合は、本自習書で説明しているような Visual Studio 2019 と同等の開発支援が得られます。
 
- 本自習書では Windows OS 上で Visual Studio 2019 16.5 Preview 2 以降を使っての手順で説明します。
+ 本自習書では Windows OS 上で Visual Studio 2019 16.6 Preview 3 以降を使っての手順で説明します。
 
 > ※1 - Visual Studio 2019 は、無償利用可能な (但しライセンス条項に違反しない場合) Community Edition で可。  
 > ※2 - Visual Studio は、複数のバージョンやインスタンスを、ひとつの OS 上に互いの干渉なくいくつもインストールして使用することが可能です。
