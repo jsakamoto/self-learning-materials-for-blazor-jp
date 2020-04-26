@@ -2,7 +2,8 @@
 # "hub" command ... https://github.com/github/hub
 
 $oldReleaseTags = (
-    # "doc/3.2.0-preview4.20210.8",
+    # "doc/3.2.0-preview5.20216.8",
+    "doc/3.2.0-preview4.20210.8",
     "doc/3.2.0-preview3.20168.3",
     "doc/3.2.0-preview1.20073.1b",
     "doc/3.2.0-preview1.20073.1",
