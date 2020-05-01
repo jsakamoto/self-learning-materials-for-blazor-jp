@@ -1,4 +1,5 @@
-﻿@inject DeviceService DeviceService
+﻿@page "/"
+@inject DeviceService DeviceService
 
 @foreach (var device in Devices)
 {
@@ -14,48 +15,15 @@
     </div>
 }
 
-<div class="device">
-    <EditForm Model="NewDevice" OnValidSubmit="OnOK">
-
-        <DataAnnotationsValidator />
-
-        <div class="name">
-            <span class="caption">デバイス名</span>
-            <span class="input-field">
-                <input type="text" @bind="NewDevice.Name" />
-            </span>
-        </div>
-        <div class="mac-address">
-            <span class="caption">MACアドレス</span>
-            <span class="input-field">
-                <input type="text" @bind="NewDevice.MACAddress" />
-            </span>
-        </div>
-        <div class="error-message">
-            <ValidationSummary></ValidationSummary>
-        </div>
-        <div class="actions">
-            <button class="button">OK</button>
-        </div>
-    </EditForm>
+<div>
+    <a class="button" href="/addnew">デバイスの追加</a>
 </div>
 
 @code {
     IEnumerable<Device> Devices = new Device[0];
 
-    Device NewDevice = new Device();
-
     protected override async Task OnInitializedAsync()
     {
         Devices = await DeviceService.GetDevicesAsync();
-    }
-
-    async Task OnOK()
-    {
-        // MACアドレスの正規化
-        NewDevice.MACAddress = NewDevice.MACAddress.Replace("-", ":").ToUpper();
-
-        await DeviceService.AddDeviceAsync(NewDevice);
-        NewDevice = new Device();
     }
 }
