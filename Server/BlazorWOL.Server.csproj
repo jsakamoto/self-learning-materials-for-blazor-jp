@@ -6,6 +6,7 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="5.0.0" />
+    <PackageReference Include="WakeOnLAN" Version="2.0.2" />
   </ItemGroup>
 
   <ItemGroup>
