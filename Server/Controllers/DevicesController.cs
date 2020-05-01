@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Net;
 using BlazorWOL.Shared;
 using Microsoft.AspNetCore.Mvc;
 
@@ -49,6 +51,18 @@ namespace BlazorWOL.Server.Controllers
         {
             var deleted = Storage.DeleteDevice(id);
             if (deleted == null) return NotFound();
+            return Ok();
+        }
+
+        [HttpPost, Route("{guid}/wakeup")]
+        public IActionResult WakeupDevice(Guid guid)
+        {
+            var device = Storage.GetDevice(guid);
+            var macAddressBytes = device.MACAddress
+                .Split(':')
+                .Select(x => byte.Parse(x, System.Globalization.NumberStyles.HexNumber))
+                .ToArray();
+            IPAddress.Broadcast.SendWol(macAddressBytes);
             return Ok();
         }
     }
