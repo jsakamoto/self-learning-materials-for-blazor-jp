@@ -17,8 +17,8 @@
 @code {
     IEnumerable<Device> Devices = new Device[0];
 
-    protected override void OnInitialized()
+    protected override async Task OnInitializedAsync()
     {
-        Devices = DeviceService.GetDevices();
+        Devices = await DeviceService.GetDevicesAsync();
     }
 }
