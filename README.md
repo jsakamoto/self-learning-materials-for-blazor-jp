@@ -14,18 +14,17 @@ Blazor はこの実行環境の上で SPA フレームワークを提供して�
 
 開発は Microsoft の ASP.NET 開発チームに引き継がれており、Apache 2.0 ライセンスのオープンソースソフトウェアとなっています。
 
-本稿執筆時点での Blazor WebAssembly (client-side) 版 のバージョンは v.3.2.0 Release Candidate (リリース候補) であり、正式リリースは 2020 年5月が予定されています。
+本稿執筆時点での Blazor WebAssembly (client-side) 版 のバージョンは、2020 年 5 月に正式リリースとなった v.3.2.0 です。
 
 この自習書について
 ----------------------------------------
 
 ### 自習書作成の背景
 
-Blazor、特に本自習書で取り上げている、ブラウザの WebAssembly 上で稼働する "client-side" 版は、まだリリース候補段階であり、正式リリースに至っていません。
+Blazor は SPA アプリケーション開発のシーンにおいて、もちろん決して ["銀の弾丸"](https://kotobank.jp/word/%E9%8A%80%E3%81%AE%E5%BC%BE%E4%B8%B8-248402) ではありません。  
+しかしながら Blazor は、適合する案件や開発者であれば、**開発の負担を減らし、よりよい生産性向上をもたらす可能性**を秘めています。
 
-しかしながら、**Blazor は SPA アプリケーション開発者の負担を減らし、よりよい生産性向上をもたらす可能性**を秘めています。
-
-そこでこの Blazor の可能性をより多くの開発者に体験していただき、Blazor (client-side) を事前評価していただければと考え、この「Blazor 自習書 (自習教材)」を作成しました。
+そこでこの Blazor の可能性をより多くの開発者に体験していただき、Blazor WebAssembly (client-side) を事前評価していただければと考え、この「Blazor WebAssembly 自習書 (自習教材)」を作成しました。
 
 ### 概要
 
@@ -42,7 +41,7 @@ Blazor、特に本自習書で取り上げている、ブラウザの WebAssembl
 
 自習書テキストは、PDF ファイルの形式でこの Zip アーカイブ内に収録しています。
 
-また、本リポジトリの [v.3.2.0-rc1.20223.4 ブランチ](https://github.com/jsakamoto/self-learning-materials-for-blazor-jp/commits/v.3.2.0-rc1.20223.4)には、自習書テキストで解説している1ステップを 1コミットとして履歴を記録したソースコードも収録してあります。
+また、本リポジトリの [v.3.2.0 ブランチ](https://github.com/jsakamoto/self-learning-materials-for-blazor-jp/commits/v.3.2.0)には、自習書テキストで解説している1ステップを 1コミットとして履歴を記録したソースコードも収録してあります。
 
 
 想定する本自習書の利用者層
@@ -65,21 +64,21 @@ Blazor、特に本自習書で取り上げている、ブラウザの WebAssembl
 
 本稿執筆時点で、本自習書による Blazor 開発を実践するにあたり必要な開発環境は下記のとおりです。
 
-- [.NET Core 3.1 SDK (3.1.201 かそれ以降)](https://dotnet.microsoft.com/download/dotnet-core/3.1)
-- [Visual Studio 2019 - 16.6.0 Preview 5 以降](https://visualstudio.microsoft.com/vs/preview/)
+- [.NET Core 3.1 SDK (3.1.300 かそれ以降)](https://dotnet.microsoft.com/download/dotnet-core/3.1)
+- [Visual Studio 2019 - 16.6.0 以降](https://visualstudio.microsoft.com/vs/)
     - "ASP.NET と Web 開発" ワークロードが選択されていること
 - 以上の環境をインストールし利用可能な Windows OS
 
-なお、本自習書では Windows OS 上で Visual Studio 2019 16.6.0 Preview 5 以降を使っての手順で説明しておりますが、Blazor アプリ開発にあたっては、最低限、 
+なお、本自習書では Windows OS 上で Visual Studio 2019 16.6.0 以降を使っての手順で説明しておりますが、Blazor アプリ開発にあたっては、最低限、 
 
-- [.NET Core 3.1 SDK (3.0.201 かそれ以降)](https://dotnet.microsoft.com/download/dotnet-core/3.1)
+- [.NET Core 3.1 SDK (3.1.300 かそれ以降)](https://dotnet.microsoft.com/download/dotnet-core/3.1)
 - および任意のテキストエディタ 
 
 さえあれば、"dotnet" CLI (Command Line Interface) を用いて、Linux 各種ディストリビューションや macOS 上でも実践可能です。
 
 特にテキストエディタとして、**Visual Studio Code** を用い、これに **["C# for Visual Studio Code" 拡張 v.1.21以上](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp)** をインストールして使用する場合は、本自習書で説明しているような Visual Studio 2019 と同等の開発支援が得られます。
 
- 本自習書では Windows OS 上で Visual Studio 2019 16.6 Preview 5 以降を使っての手順で説明します。
+ 本自習書では Windows OS 上で Visual Studio 2019 16.6 以降を使っての手順で説明します。
 
 > ※1 - Visual Studio 2019 は、無償利用可能な (但しライセンス条項に違反しない場合) Community Edition で可。  
 > ※2 - Visual Studio は、複数のバージョンやインスタンスを、ひとつの OS 上に互いの干渉なくいくつもインストールして使用することが可能です。
