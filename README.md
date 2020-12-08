@@ -41,7 +41,7 @@ Blazor は SPA アプリケーション開発のシーンにおいて、もち�
 
 自習書テキストは、PDF ファイルの形式でこの Zip アーカイブ内に収録しています。
 
-また、本リポジトリの [v.5.0.0 ブランチ](https://github.com/jsakamoto/self-learning-materials-for-blazor-jp/commits/v.5.0.0)には、自習書テキストで解説している1ステップを 1コミットとして履歴を記録したソースコードも収録してあります。
+また、本リポジトリの [v.5.0.0b ブランチ](https://github.com/jsakamoto/self-learning-materials-for-blazor-jp/commits/v.5.0.0b)には、自習書テキストで解説している1ステップを 1コミットとして履歴を記録したソースコードも収録してあります。
 
 
 想定する本自習書の利用者層
