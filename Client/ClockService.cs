@@ -11,8 +11,8 @@ public class ClockService
         new() { Name = "シアトル", TimeZoneId = "America/Los_Angeles" },
     };
 
-    public IEnumerable<Clock> GetClocks()
+    public async ValueTask<IEnumerable<Clock>> GetClocksAsync()
     {
-        return this.Clocks;
+        return await ValueTask.FromResult(this.Clocks);
     }
 }
