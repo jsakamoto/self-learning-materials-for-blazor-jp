@@ -20,8 +20,8 @@
 {
     private IEnumerable<Clock> Clocks = Enumerable.Empty<Clock>();
 
-    protected override void OnInitialized()
+    protected override async Task OnInitializedAsync()
     {
-        this.Clocks = this.ClockService.GetClocks();
+        this.Clocks = await this.ClockService.GetClocksAsync();
     }
 }
