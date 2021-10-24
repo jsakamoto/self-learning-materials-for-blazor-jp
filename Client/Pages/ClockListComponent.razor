@@ -1,4 +1,6 @@
-﻿@foreach (var clock in this.Clocks)
+﻿@inject ClockService ClockService
+
+@foreach (var clock in this.Clocks)
 {
     <div @key="clock.Id" class="clock">
         <div class="name">
@@ -16,9 +18,10 @@
 
 @code
 {
-    private Clock[] Clocks = {
-        new() {Name = "札幌", TimeZoneId = "Asia/Tokyo"},
-        new() {Name = "バンコク", TimeZoneId = "Asia/Bangkok"},
-        new() {Name = "シアトル", TimeZoneId = "America/Los_Angeles"},
-    };
+    private IEnumerable<Clock> Clocks = Enumerable.Empty<Clock>();
+
+    protected override void OnInitialized()
+    {
+        this.Clocks = this.ClockService.GetClocks();
+    }
 }
