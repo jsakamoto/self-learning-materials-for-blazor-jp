@@ -15,4 +15,10 @@ public class ClockService
     {
         return await ValueTask.FromResult(this.Clocks);
     }
+
+    public async ValueTask AddClockAsync(Clock clock)
+    {
+        this.Clocks.Add(clock);
+        await ValueTask.CompletedTask;
+    }
 }
