@@ -2,43 +2,13 @@
 @inject ClockService ClockService
 @inject NavigationManager NavigationManager
 
-<div class="clock form">
-    <EditForm Model="this.NewClock" OnValidSubmit="OnOK">
-        <DataAnnotationsValidator />
-        <div class="name">
-            <span class="caption">表示名</span>
-            <span class="input-field">
-                <input type="text" @bind="this.NewClock.Name" autofocus />
-            </span>
-        </div>
-        <div class="time-zone">
-            <span class="caption">タイムゾーン</span>
-            <span class="input-field">
-                <select @bind="this.NewClock.TimeZoneId">
-                    @foreach (var zone in TimeZoneInfo.GetSystemTimeZones())
-                    {
-                        <option value="@zone.Id">@zone</option>
-                    }
-                </select>
-            </span>
-        </div>
-        <div class="error-message">
-            <ValidationSummary></ValidationSummary>
-        </div>
-        <div class="actions">
-            <button class="button">OK</button>
-            <a class="button" href="./">キャンセル</a>
-        </div>
-    </EditForm>
-</div>
+<ClockForm Item="new()" OnClickOK="this.OnOK"/>
 
 @code
 {
-    private Clock NewClock = new();
-
-    private async Task OnOK()
+    private async Task OnOK(Clock newClock)
     {
-        await this.ClockService.AddClockAsync(this.NewClock);
+        await this.ClockService.AddClockAsync(newClock);
         this.NavigationManager.NavigateTo("./");
     }
 }
