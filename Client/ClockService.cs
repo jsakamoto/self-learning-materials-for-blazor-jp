@@ -21,4 +21,20 @@ public class ClockService
         this.Clocks.Add(clock);
         await ValueTask.CompletedTask;
     }
+
+    public async ValueTask<Clock?> GetClockAsync(Guid id)
+    {
+        var clock = this.Clocks.FirstOrDefault(c => c.Id == id);
+        return await ValueTask.FromResult(clock);
+    }
+
+    public async ValueTask UpdateClockAsync(Guid id, Clock clock)
+    {
+        var updateTarget = this.Clocks.FirstOrDefault(c => c.Id == id);
+        if (updateTarget == null) return;
+        updateTarget.Name = clock.Name;
+        updateTarget.TimeZoneId = clock.TimeZoneId;
+        
+        await ValueTask.CompletedTask;
+    }
 }
