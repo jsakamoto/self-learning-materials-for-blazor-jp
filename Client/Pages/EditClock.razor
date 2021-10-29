@@ -1,0 +1,8 @@
+﻿@page "/edit/{ClockId:guid}"
+
+<p>Clock Id is @this.ClockId</p>
+
+@code {
+    [Parameter]
+    public Guid ClockId { get; set; }
+}
