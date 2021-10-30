@@ -1,4 +1,6 @@
 ﻿@page "/"
+@using System.Timers
+@implements IDisposable
 @inject ClockService ClockService
 @inject NavigationManager NavigationManager
 
@@ -31,13 +33,29 @@
 {
     private IEnumerable<Clock> Clocks = Enumerable.Empty<Clock>();
 
+    private Timer Timer = new(interval: 1000);
+
     protected override async Task OnInitializedAsync()
     {
         this.Clocks = await this.ClockService.GetClocksAsync();
+
+        this.Timer.Elapsed += this.Timer_Elapsed;
+        this.Timer.Start();
+    }
+
+    private void Timer_Elapsed(object? sender, ElapsedEventArgs e)
+    {
+        this.StateHasChanged();
     }
 
     private void OnClickEdit(Clock clock)
     {
         this.NavigationManager.NavigateTo($"./edit/{clock.Id}");
+    }
+
+    public void Dispose()
+    {
+        this.Timer.Elapsed -= this.Timer_Elapsed;
+        this.Timer.Dispose();
     }
 }
