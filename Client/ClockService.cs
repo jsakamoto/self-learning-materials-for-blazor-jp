@@ -1,40 +1,39 @@
-﻿using BlazorWorldClock.Shared;
+﻿using System.Net.Http.Json;
+using BlazorWorldClock.Shared;
 
 namespace BlazorWorldClock.Client;
 
 public class ClockService
 {
-    private List<Clock> Clocks { get; } = new()
+    private HttpClient HttpClient { get; }
+
+    public ClockService(HttpClient httpClient)
     {
-        new() { Name = "札幌", TimeZoneId = "Asia/Tokyo" },
-        new() { Name = "バンコク", TimeZoneId = "Asia/Bangkok" },
-        new() { Name = "シアトル", TimeZoneId = "America/Los_Angeles" },
-    };
+        this.HttpClient = httpClient;
+    }
 
     public async ValueTask<IEnumerable<Clock>> GetClocksAsync()
     {
-        return await ValueTask.FromResult(this.Clocks);
+        return await this.HttpClient.GetFromJsonAsync<Clock[]>("api/clocks") ?? Enumerable.Empty<Clock>();
     }
 
     public async ValueTask AddClockAsync(Clock clock)
     {
-        this.Clocks.Add(clock);
-        await ValueTask.CompletedTask;
+        await this.HttpClient.PostAsJsonAsync("api/clocks", clock);
     }
 
     public async ValueTask<Clock?> GetClockAsync(Guid id)
     {
-        var clock = this.Clocks.FirstOrDefault(c => c.Id == id);
-        return await ValueTask.FromResult(clock);
+        return await this.HttpClient.GetFromJsonAsync<Clock>($"api/clocks/{id}");
     }
 
     public async ValueTask UpdateClockAsync(Guid id, Clock clock)
     {
-        var updateTarget = this.Clocks.FirstOrDefault(c => c.Id == id);
-        if (updateTarget == null) return;
-        updateTarget.Name = clock.Name;
-        updateTarget.TimeZoneId = clock.TimeZoneId;
-        
-        await ValueTask.CompletedTask;
+        await this.HttpClient.PutAsJsonAsync($"api/clocks/{id}", clock);
+    }
+
+    public async ValueTask DeleteClockAsync(Guid id)
+    {
+        await this.HttpClient.DeleteAsync($"api/clocks/{id}");
     }
 }
