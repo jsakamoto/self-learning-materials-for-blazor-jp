@@ -1,4 +1,6 @@
-﻿<div class="clock form">
+﻿@inject IJSRuntime JSRuntime
+
+<div class="clock form">
     <EditForm Model="this.Item" OnValidSubmit="OnOK">
         <DataAnnotationsValidator />
         <div class="name">
@@ -22,6 +24,10 @@
             <ValidationSummary></ValidationSummary>
         </div>
         <div class="actions">
+            @if (this.OnClickDelete.HasDelegate)
+            {
+                <button class="button delete-button" type="button" @onclick="this.OnDelete">削除</button>
+            }
             <button class="button">OK</button>
             <a class="button" href="./">キャンセル</a>
         </div>
@@ -36,8 +42,20 @@
     [Parameter]
     public EventCallback<Clock> OnClickOK { get; set; }
 
+    [Parameter]
+    public EventCallback OnClickDelete { get; set; }
+
     private async Task OnOK()
     {
         await this.OnClickOK.InvokeAsync(this.Item);
+    }
+
+    private async Task OnDelete()
+    {
+        var yes = await this.JSRuntime.InvokeAsync<bool>("confirm", "削除してもよろしいですか?");
+        if (yes)
+        {
+            await this.OnClickDelete.InvokeAsync();
+        }
     }
 }
