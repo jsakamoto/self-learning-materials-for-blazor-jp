@@ -1,4 +1,8 @@
-﻿var builder = WebApplication.CreateBuilder(args);
+﻿using BlazorWorldClock.Server;
+using BlazorWorldClock.Shared;
+using static System.Environment.SpecialFolder;
+
+var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
@@ -23,6 +27,15 @@ app.UseHttpsRedirection();
 
 app.UseBlazorFrameworkFiles();
 app.UseStaticFiles();
+
+var storagePath = Path.Combine(Environment.GetFolderPath(CommonApplicationData), "Blazor World Clock", "clocks.json");
+var clockStorage = new ClockStorage(storagePath);
+
+app.MapPost("/api/clocks", (Clock clock) => clockStorage.AddClock(clock));
+app.MapGet("/api/clocks", () => clockStorage.GetClocks());
+app.MapGet("/api/clocks/{id}", (Guid id) => clockStorage.GetClock(id));
+app.MapPut("/api/clocks/{id}", (Guid id, Clock clock) => clockStorage.UpdateClock(id, clock));
+app.MapDelete("/api/clocks/{id}", (Guid id) => clockStorage.DeleteClock(id));
 
 app.UseRouting();
 app.MapRazorPages();
