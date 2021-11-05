@@ -1,20 +1,20 @@
 
-Blazor WebAssembly (client-side Blazor) アプリケーションプログラミング自習書
+Blazor WebAssembly アプリケーションプログラミング自習書
 ============================================
 
-概要 - Blazor WebAssembly (client-side Balzor) とは
+概要 - Blazor WebAssembly とは
 ----------------------------------------
 
 "Blazor" (ブレイザー) とは、C# 言語を用いて Single Page Web アプリケーション (SPA) を開発、実行する、フレームワーク/実行環境/開発環境です。
 
-Blazor WebAssembly ("client-side") 版では、C# ソースコードを JavaScript に変換する**のではなく**、Web ブラウザの WebAssembly の仕組みの上に .NET 実行環境を構築することで実現されています。  
+Blazor の WebAssembly 版では、C# ソースコードを JavaScript に変換する**のではなく**、Web ブラウザの WebAssembly の仕組みの上に .NET 実行環境を構築することで実現されています。  
 **この Web ブラウザ上の .NET 実行環境が .NET アセンブリ (.dll) を読み込んで IL (中間言語) を実行**します。
 
-Blazor はこの実行環境の上で SPA フレームワークを提供しており、**ビュー (コンポーネントの HTML テンプレート部分) は Razor 構文**で記述します。
+Blazor WebAssembly はこの実行環境の上で SPA フレームワークを提供しており、**ビュー (コンポーネントの HTML テンプレート部分) は Razor 構文**で記述します。
 
 開発は Microsoft の ASP.NET 開発チームに引き継がれており、Apache 2.0 ライセンスのオープンソースソフトウェアとなっています。
 
-本稿執筆時点での Blazor WebAssembly (client-side) 版 のバージョンは、v.5.0.0 です。
+本稿執筆時点での Blazor WebAssembly 版 のバージョンは、v.6.0.0-rc.2 です。
 
 この自習書について
 ----------------------------------------
@@ -24,15 +24,15 @@ Blazor はこの実行環境の上で SPA フレームワークを提供して�
 Blazor は SPA アプリケーション開発のシーンにおいて、もちろん決して ["銀の弾丸"](https://kotobank.jp/word/%E9%8A%80%E3%81%AE%E5%BC%BE%E4%B8%B8-248402) ではありません。  
 しかしながら Blazor は、適合する案件や開発者であれば、**開発の負担を減らし、よりよい生産性向上をもたらす可能性**を秘めています。
 
-そこでこの Blazor の可能性をより多くの開発者に体験していただき、Blazor WebAssembly (client-side) を事前評価していただければと考え、この「Blazor WebAssembly 自習書 (自習教材)」を作成しました。
+そこでこの Blazor の可能性をより多くの開発者に体験していただき、Blazor WebAssembly を事前評価していただければと考え、この「Blazor WebAssembly アプリケーションプログラミング自習書 (自習教材)」を作成しました。
 
 ### 概要
 
-この「Blazor WebAssembly (client-side) 自習書」では、CRUD 操作を含む SPA アプリケーションを Blazor WebAssembly (client-side) を使って作成する手順を、1ステップごとに分けて解説しています。
+この「Blazor WebAssembly アプリケーションプログラミング自習書」では、CRUD 操作を含む SPA アプリケーションを Blazor WebAssembly を使って作成する手順を、1ステップごとに分けて解説しています。
 
 また、ステップごとの完成ソースコードも提供しています。
 
-この手順に沿って作業を進めることで、**Blazor WebAssembly (client-side) プログラミングの主だった構成要素を習得・体験**できます。  
+この手順に沿って作業を進めることで、**Blazor WebAssembly プログラミングの主だった構成要素を習得・体験**できます。  
 加えてその開発作業の中で、**IDE 支援がどのように役立つか**も体験することができます。
 
 ### コンテンツ
@@ -41,20 +41,20 @@ Blazor は SPA アプリケーション開発のシーンにおいて、もち�
 
 自習書テキストは、PDF ファイルの形式でこの Zip アーカイブ内に収録しています。
 
-また、本リポジトリの [v.5.0.0b ブランチ](https://github.com/jsakamoto/self-learning-materials-for-blazor-jp/commits/v.5.0.0b)には、自習書テキストで解説している1ステップを 1コミットとして履歴を記録したソースコードも収録してあります。
+また、本リポジトリの [v.6.0.0-rc.2 ブランチ](https://github.com/jsakamoto/self-learning-materials-for-blazor-jp/commits/v.6.0.0-rc.2)には、自習書テキストで解説している1ステップを 1コミットとして履歴を記録したソースコードも収録してあります。
 
 
 想定する本自習書の利用者層
 ----------------------------------------
 
-本自習書では、サーバー側実装として ASP.NET Core MVC を採用しています。  
+本自習書では、サーバー側実装として ASP.NET Core を採用しています。  
 また Blazor は基本的にプログラミング言語は C# が想定されています。
 
 そのため、本自習書では下記のような開発者を想定しております。
 
 - HTML/CSS/JavaScript を用いた Web アプリケーション開発の知識がある
 - C# によるプログラミングの知識がある
-- 加えて ASP.NET Core MVC によるサーバーサイド Web アプリケーション開発の知識があるとなお可
+- 加えて ASP.NET Core によるサーバーサイド Web アプリケーション開発の知識があるとなお可
 
 > ※ Angular, React, Vue などといった JavaScript SPA フレームワークの知識・経験は必ずしも必要としないことと考えていますが、もし何かしら SPA フレームワークの知識・経験があれば、Blazor の理解にも役立つと思います。
 
@@ -64,23 +64,24 @@ Blazor は SPA アプリケーション開発のシーンにおいて、もち�
 
 本稿執筆時点で、本自習書による Blazor 開発を実践するにあたり必要な開発環境は下記のとおりです。
 
-- [.NET Core 5.0 SDK (5.0.100 かそれ以降)](https://dotnet.microsoft.com/download/dotnet-core/5.0)
-- [Visual Studio 2019 - 16.8.1 以降](https://visualstudio.microsoft.com/vs/)
+- [.NET Core 6.0 SDK (6.0.100 かそれ以降)](https://dotnet.microsoft.com/download/dotnet-core/6.0)
+- [Visual Studio 2022- 17.0.0 以降](https://visualstudio.microsoft.com/vs/)
     - "ASP.NET と Web 開発" ワークロードが選択されていること
 - 以上の環境をインストールし利用可能な Windows OS
 
-なお、本自習書では Windows OS 上で Visual Studio 2019 16.8.1 以降を使っての手順で説明しておりますが、Blazor アプリ開発にあたっては、最低限、 
+なお、本自習書では Windows OS 上で Visual Studio 2022 17.0.0 以降を使っての手順で説明しておりますが、Blazor アプリ開発にあたっては、最低限、 
 
-- [.NET Core 5.0 SDK (5.0.100 かそれ以降)](https://dotnet.microsoft.com/download/dotnet-core/5.0)
+- [.NET Core 6.0 SDK (6.0.100 かそれ以降)](https://dotnet.microsoft.com/download/dotnet-core/5.0)
 - および任意のテキストエディタ 
 
 さえあれば、"dotnet" CLI (Command Line Interface) を用いて、Linux 各種ディストリビューションや macOS 上でも実践可能です。
 
-特にテキストエディタとして、**Visual Studio Code** を用い、これに **["C# for Visual Studio Code" 拡張 v.1.23.6以上](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp)** をインストールして使用する場合は、本自習書で説明しているような Visual Studio 2019 と同等の開発支援が得られます。
+特にテキストエディタとして、**Visual Studio Code** を用い、これに **["C# for Visual Studio Code" 拡張 v.1.23.6以上](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp)** をインストールして使用する場合は、本自習書で説明しているような Visual Studio 2022 と同等の開発支援が得られます。
 
- 本自習書では Windows OS 上で Visual Studio 2019 16.8.1 以降を使っての手順で説明します。
+ 本自習書は、Windows OS 上で Visual Studio 2022 17.0.0 以降を使っての手順で説明していますが、上記のとおり、その他の OS、任意の IDE やエディタでも本自習書に基づいて学習が可能です。  
+ また、ソースコードには、Visual Studio Code による開発がすぐに行えるようタスク設定 (`.vscode` フォルダ) も同梱しています。
 
-> ※1 - Visual Studio 2019 は、無償利用可能な (但しライセンス条項に違反しない場合) Community Edition で可。  
+> ※1 - Visual Studio 2022 は、無償利用可能な (但しライセンス条項に違反しない場合) Community Edition で可。  
 > ※2 - Visual Studio は、複数のバージョンやインスタンスを、ひとつの OS 上に互いの干渉なくいくつもインストールして使用することが可能です。
 
 
