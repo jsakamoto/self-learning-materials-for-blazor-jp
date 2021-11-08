@@ -1,5 +1,5 @@
 ﻿# Get latest branch name which starts with "v.x.x..."
-$baseBranch = "v.6.0.0-rc.2"
+$baseBranch = "v.6.0.0"
 
 $rootDir = Join-Path $PSScriptRoot ".." -Resolve
 Push-Location $rootDir
@@ -59,7 +59,7 @@ $boilerplateZipPath = Join-Path $baseDir "BlazorWorldClock-Step01-Boilerplate.zi
 Compress-Archive $boilerplateSrcPath $boilerplateZipPath -Force
 
 # Create Release Package Zip file.
-$releasePackSrcPath = @($sourceCodeDir, "README.md", "LICENSE", "Blazorアプリケーションプログラミング自習書-$baseBranch.pdf")
+$releasePackSrcPath = @($sourceCodeDir, "LICENSE", "Blazorアプリケーションプログラミング自習書-$baseBranch.pdf")
 $releasePackZipPath = Join-Path $baseDir "Self-Learning-Materials-for-Blazor-JP-$baseBranch.zip"
 Compress-Archive $releasePackSrcPath $releasePackZipPath -Force
 
