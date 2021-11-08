@@ -14,7 +14,7 @@
 「Blazor ってどこがメリットなの?」  
 といった疑問にお答えできることを狙いとした、Blazor についての事前評価ができるような、そんな入門レベルの自習書テキストです。
 
-なお、本書が対象としている Blazor のバージョンは v.6.0.0-rc.2 です。  
+なお、本書が対象としている Blazor のバージョンは v.6.0.0 です。  
 (GitHub リポジトリには、本書の旧バージョン対応版も履歴に含まれています)
 
 
@@ -36,11 +36,11 @@
 
 自習書テキストは PDF ファイルとして提供しており、下記リンクから参照できます。
 
-- [📒 Blazorアプリケーションプログラミング自習書-v.6.0.0-rc.2.pdf](https://jsakamoto.github.io/self-learning-materials-for-blazor-jp/Blazor%E3%82%A2%E3%83%97%E3%83%AA%E3%82%B1%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%9F%E3%83%B3%E3%82%B0%E8%87%AA%E7%BF%92%E6%9B%B8-v.6.0.0-rc.2.pdf)
+- [📒 Blazorアプリケーションプログラミング自習書-v.6.0.0.pdf](https://jsakamoto.github.io/self-learning-materials-for-blazor-jp/Blazor%E3%82%A2%E3%83%97%E3%83%AA%E3%82%B1%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%9F%E3%83%B3%E3%82%B0%E8%87%AA%E7%BF%92%E6%9B%B8-v.6.0.0.pdf)
 
 この自習書テキストに沿って作業を進めることで、**Blazor WebAssembly プログラミングの主だった構成要素を習得・体験**しつつ、**IDE 支援がどのように役立つか**も体験することができます。
 
-また、本リポジトリの [v.6.0.0-rc.2 ブランチ](https://github.com/jsakamoto/self-learning-materials-for-blazor-jp/commits/v.6.0.0-rc.2)には、自習書テキストで解説している 1 ステップを 1 コミットとして履歴を記録したソースコードが収録されています。  
+また、本リポジトリの [v.6.0.0 ブランチ](https://github.com/jsakamoto/self-learning-materials-for-blazor-jp/commits/v.6.0.0)には、自習書テキストで解説している 1 ステップを 1 コミットとして履歴を記録したソースコードが収録されています。  
 適宜ご参照ください。
 
 なお、自習書テキスト PDF および 1 ステップごとのソースコードを収録した Zip ファイルを、[GitHub リポジトリの Release ページ](https://github.com/jsakamoto/self-learning-materials-for-blazor-jp/releases)からダウンロードできます。  
