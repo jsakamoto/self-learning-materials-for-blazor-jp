@@ -1,1 +1,1 @@
-### Blazor v.6.0.0 に対応した [6.0.0](https://github.com/jsakamoto/self-learning-materials-for-blazor-jp/releases/tag/doc%2F6.0.0) をリリースしています。そちらをご利用ください。
+### Blazor v.6.0.0 に対応した [6.0.0-rev.2](https://github.com/jsakamoto/self-learning-materials-for-blazor-jp/releases/tag/doc%2F6.0.0-rev.2) をリリースしています。そちらをご利用ください。
