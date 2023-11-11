@@ -16,7 +16,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Components\Pages\" />
     <None Remove="**\*\.gitkeep" />
   </ItemGroup>
 
