@@ -1,0 +1,45 @@
+﻿@inject ClockService ClockService
+
+<div class="clock form">
+    <EditForm Model="this.Item" OnValidSubmit="OnOK">
+        <DataAnnotationsValidator />
+        <div class="name">
+            <span class="caption">表示名</span>
+            <span class="input-field">
+                <input type="text" @bind="this.Item.Name" autofocus />
+            </span>
+        </div>
+        <div class="time-zone">
+            <span class="caption">タイムゾーン</span>
+            <span class="input-field">
+                <select @bind="this.Item.TimeZoneId">
+                    @foreach (var zone in TimeZoneInfo.GetSystemTimeZones())
+                    {
+                        <option value="@zone.Id">@zone</option>
+                    }
+                </select>
+            </span>
+        </div>
+        <div class="error-message">
+            <ValidationSummary></ValidationSummary>
+        </div>
+        <div class="actions">
+            <button class="button">OK</button>
+            <a class="button" href="./">キャンセル</a>
+        </div>
+    </EditForm>
+</div>
+
+@code
+{
+    [Parameter]
+    public Clock Item { get; set; } = new();
+
+    [Parameter]
+    public EventCallback<Clock> OnClickOK { get; set; }
+
+    private async Task OnOK()
+    {
+        await this.OnClickOK.InvokeAsync(this.Item);
+    }
+}
