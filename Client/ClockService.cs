@@ -20,4 +20,19 @@ public class ClockService
         _clocks.Add(clock);
         await ValueTask.CompletedTask;
     }
+
+    public async ValueTask<Clock?> GetClockAsync(Guid id)
+    {
+        return await ValueTask.FromResult(_clocks.FirstOrDefault(c => c.Id == id));
+    }
+
+    public async ValueTask UpdateClockAsync(Clock clock)
+    {
+        var index = _clocks.FindIndex(c => c.Id == clock.Id);
+        if (index >= 0)
+        {
+            _clocks[index] = clock;
+        }
+        await ValueTask.CompletedTask;
+    }
 }
