@@ -7,7 +7,7 @@
 {
     @if (_item != null)
     {
-        <ClockForm Item="_item" OnClickOK="this.OnClickOK" />
+        <ClockForm Item="_item" OnClickOK="this.OnClickOK" OnClickDelete="this.OnClickDelete" />
     }
     else
     {
@@ -42,6 +42,12 @@
     private async Task OnClickOK(Clock item)
     {
         await this.ClockService.UpdateClockAsync(item);
+        this.NavigationManager.NavigateTo("./");
+    }
+
+    private async Task OnClickDelete()
+    {
+        await this.ClockService.DeleteClockAsync(this.ClockId);
         this.NavigationManager.NavigateTo("./");
     }
 }
