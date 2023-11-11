@@ -1,5 +1,6 @@
 ﻿@page "/addclock"
 @inject ClockService ClockService
+@inject NavigationManager NavigationManager
 
 <div class="clock form">
     <EditForm Model="_newClock" OnValidSubmit="OnOK">
@@ -26,6 +27,7 @@
         </div>
         <div class="actions">
             <button class="button">OK</button>
+            <a class="button" href="./">キャンセル</a>
         </div>
     </EditForm>
 </div>
@@ -37,6 +39,6 @@
     private async Task OnOK()
     {
         await this.ClockService.AddClockAsync(_newClock);
-        _newClock = new();
+        this.NavigationManager.NavigateTo("./");
     }
 }
