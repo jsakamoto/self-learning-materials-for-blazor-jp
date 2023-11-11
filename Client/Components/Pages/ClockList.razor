@@ -1,6 +1,7 @@
 ﻿@page "/"
 
 @inject ClockService ClockService
+@inject NavigationManager NavigationManager
 
 @foreach (var clock in _clocks)
 {
@@ -14,6 +15,11 @@
         <div class="time-zone">
             <span class="caption">タイムゾーン</span>
             <span class="value">@clock.TimeZoneId</span>
+        </div>
+        <div class="actions">
+            <button class="button edit-button" @onclick="() => this.OnClickEdit(clock)">
+                編集
+            </button>
         </div>
     </div>
 }
@@ -29,5 +35,10 @@
     protected override async Task OnInitializedAsync()
     {
         _clocks = await this.ClockService.GetClocksAsync();
+    }
+
+    private void OnClickEdit(Clock clock)
+    {
+        this.NavigationManager.NavigateTo($"./editclock/{clock.Id}");
     }
 }
