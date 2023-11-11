@@ -1,9 +1,47 @@
 ﻿@page "/editclock/{ClockId:guid}"
 
-<p>Clock Id is @this.ClockId</p>
+@inject ClockService ClockService
+@inject NavigationManager NavigationManager
+
+@if (_initialized)
+{
+    @if (_item != null)
+    {
+        <ClockForm Item="_item" OnClickOK="this.OnClickOK" />
+    }
+    else
+    {
+        <p class="error-message">時計情報が見つかりません</p>
+    }
+}
 
 @code
 {
     [Parameter]
     public Guid ClockId { get; set; }
+
+    private Clock? _item;
+
+    private bool _initialized = false;
+
+    protected override async Task OnInitializedAsync()
+    {
+        var clock = await this.ClockService.GetClockAsync(this.ClockId);
+        if (clock != null)
+        {
+            _item = new()
+                {
+                    Id = clock.Id,
+                    Name = clock.Name,
+                    TimeZoneId = clock.TimeZoneId
+                };
+        }
+        _initialized = true;
+    }
+
+    private async Task OnClickOK(Clock item)
+    {
+        await this.ClockService.UpdateClockAsync(item);
+        this.NavigationManager.NavigateTo("./");
+    }
 }
