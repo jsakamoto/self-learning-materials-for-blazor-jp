@@ -1,4 +1,6 @@
-﻿@inject ClockService ClockService
+﻿@page "/"
+
+@inject ClockService ClockService
 
 @foreach (var clock in _clocks)
 {
@@ -16,49 +18,16 @@
     </div>
 }
 
-<div class="clock form">
-    <EditForm Model="_newClock" OnValidSubmit="OnOK">
-        <DataAnnotationsValidator />
-        <div class="name">
-            <span class="caption">表示名</span>
-            <span class="input-field">
-                <input type="text" @bind="_newClock.Name" autofocus />
-            </span>
-        </div>
-        <div class="time-zone">
-            <span class="caption">タイムゾーン</span>
-            <span class="input-field">
-                <select @bind="_newClock.TimeZoneId">
-                    @foreach (var zone in TimeZoneInfo.GetSystemTimeZones())
-                    {
-                        <option value="@zone.Id">@zone</option>
-                    }
-                </select>
-            </span>
-        </div>
-        <div class="error-message">
-            <ValidationSummary></ValidationSummary>
-        </div>
-        <div class="actions">
-            <button class="button">OK</button>
-        </div>
-    </EditForm>
+<div>
+    <a class="button" href="./addclock">時計の追加</a>
 </div>
 
 @code
 {
     private IEnumerable<Clock> _clocks = [];
 
-    private Clock _newClock = new();
-
     protected override async Task OnInitializedAsync()
     {
         _clocks = await this.ClockService.GetClocksAsync();
-    }
-
-    private async Task OnOK()
-    {
-        await this.ClockService.AddClockAsync(_newClock);
-        _newClock = new();
     }
 }
