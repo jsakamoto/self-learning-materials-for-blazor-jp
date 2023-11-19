@@ -11,22 +11,22 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       # Checkout the code
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
         with:
           ref: public-edition
           path: code
 
       # Checkout the doc
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
         with:
           ref: master
           path: doc
 
-      # Install .NET Core SDK
-      - name: Setup .NET Core
+      # Install .NET SDK
+      - name: Setup .NET SDK
         uses: actions/setup-dotnet@v2
         with:
-          dotnet-version: 7.0.100
+          dotnet-version: 8.0.x
       - name: Install .NET WebAssembly Tools
         run: dotnet workload install wasm-tools
 
