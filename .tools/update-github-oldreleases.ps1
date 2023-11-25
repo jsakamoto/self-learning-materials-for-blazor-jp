@@ -1,5 +1,14 @@
+# This script updates the release notes of old releases on GitHub.
+
 # This script requires "hub" command is installed.
 # "hub" command ... https://github.com/github/hub
+
+# This script requires the following configuration in "~/.config/hub" file, like below:
+
+# github.com:
+# - protocol: https
+#  user: {USER NAME}
+#  oauth_token: {PERSONA ACCESS TOKNE}
 
 $oldReleaseTags = (
     # "doc/8.0.0",
