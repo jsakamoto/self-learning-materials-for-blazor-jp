@@ -84,7 +84,7 @@
 
 下記リンクをクリックすると、.NET SDK のインストールも既に済んでいる、本自習書のステップ 1 の GitHub Codespaces による開発環境が Web ブラウザで開きます。
 
-[![GitHub Codespaces で開く](https://github.com/codespaces/badge.svg)](https://codespaces.new/jsakamoto/self-learning-materials-for-blazor-jp/tree/boilerplate%2Fv.8.0.0)
+[![GitHub Codespaces で開く](https://github.com/codespaces/badge.svg)](https://github.com/codespaces/new/jsakamoto/self-learning-materials-for-blazor-jp/tree/boilerplate%2Fv.8.0.0?quickstart=1)
 
 詳細は[自習書テキスト PDF](https://jsakamoto.github.io/self-learning-materials-for-blazor-jp/Blazor%E3%82%A2%E3%83%97%E3%83%AA%E3%82%B1%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%9F%E3%83%B3%E3%82%B0%E8%87%AA%E7%BF%92%E6%9B%B8-v.8.0.0.pdf) の「開発環境」の章をご参照ください。
 
