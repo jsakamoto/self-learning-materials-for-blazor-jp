@@ -1,5 +1,5 @@
 ﻿# Get latest branch name which starts with "v.x.x..."
-$baseBranch = "v.7.0.1"
+$baseBranch = "v.8.0.0"
 
 $rootDir = Join-Path $PSScriptRoot ".." -Resolve
 Push-Location $rootDir
