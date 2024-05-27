@@ -36,11 +36,11 @@
 
 自習書テキストは PDF ファイルとして提供しており、下記リンクから参照できます。
 
-- [📒 Blazorアプリケーションプログラミング自習書-v.8.0.0.pdf](https://jsakamoto.github.io/self-learning-materials-for-blazor-jp/Blazor%E3%82%A2%E3%83%97%E3%83%AA%E3%82%B1%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%9F%E3%83%B3%E3%82%B0%E8%87%AA%E7%BF%92%E6%9B%B8-v.8.0.0.pdf)
+- [📒 Blazorアプリケーションプログラミング自習書-v.8.0.1.pdf](https://jsakamoto.github.io/self-learning-materials-for-blazor-jp/Blazor%E3%82%A2%E3%83%97%E3%83%AA%E3%82%B1%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%9F%E3%83%B3%E3%82%B0%E8%87%AA%E7%BF%92%E6%9B%B8-v.8.0.1.pdf)
 
 この自習書テキストに沿って作業を進めることで、**Blazor WebAssembly プログラミングの主だった構成要素を習得・体験**しつつ、**IDE 支援がどのように役立つか**も体験することができます。
 
-また、本リポジトリの [v.8.0.0 ブランチ](https://github.com/jsakamoto/self-learning-materials-for-blazor-jp/commits/v.8.0.0)には、自習書テキストで解説している 1 ステップを 1 コミットとして履歴を記録したソースコードが収録されています。  
+また、本リポジトリの [v.8.0.1 ブランチ](https://github.com/jsakamoto/self-learning-materials-for-blazor-jp/commits/v.8.0.1)には、自習書テキストで解説している 1 ステップを 1 コミットとして履歴を記録したソースコードが収録されています。  
 適宜ご参照ください。
 
 なお、自習書テキスト PDF および 1 ステップごとのソースコードを収録した Zip ファイルを、[GitHub リポジトリの Release ページ](https://github.com/jsakamoto/self-learning-materials-for-blazor-jp/releases)からダウンロードできます。  
@@ -84,9 +84,9 @@
 
 下記リンクをクリックすると、.NET SDK のインストールも既に済んでいる、本自習書のステップ 1 の GitHub Codespaces による開発環境が Web ブラウザで開きます。
 
-[![GitHub Codespaces で開く](https://github.com/codespaces/badge.svg)](https://github.com/codespaces/new/jsakamoto/self-learning-materials-for-blazor-jp/tree/boilerplate%2Fv.8.0.0?quickstart=1)
+[![GitHub Codespaces で開く](https://github.com/codespaces/badge.svg)](https://github.com/codespaces/new/jsakamoto/self-learning-materials-for-blazor-jp/tree/boilerplate%2Fv.8.0.1?quickstart=1)
 
-詳細は[自習書テキスト PDF](https://jsakamoto.github.io/self-learning-materials-for-blazor-jp/Blazor%E3%82%A2%E3%83%97%E3%83%AA%E3%82%B1%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%9F%E3%83%B3%E3%82%B0%E8%87%AA%E7%BF%92%E6%9B%B8-v.8.0.0.pdf) の「開発環境」の章をご参照ください。
+詳細は[自習書テキスト PDF](https://jsakamoto.github.io/self-learning-materials-for-blazor-jp/Blazor%E3%82%A2%E3%83%97%E3%83%AA%E3%82%B1%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%9F%E3%83%B3%E3%82%B0%E8%87%AA%E7%BF%92%E6%9B%B8-v.8.0.1.pdf) の「開発環境」の章をご参照ください。
 
 > [!NOTE]  
 > GitHub Codespaces は最長 60 分/月の無料枠がある有償サービスです。料金体系について詳しくは[公式サイト](https://github.co.jp/features/codespaces)を参照ください。
