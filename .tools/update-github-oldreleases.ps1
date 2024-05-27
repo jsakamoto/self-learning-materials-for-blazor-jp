@@ -11,7 +11,8 @@
 #  oauth_token: {PERSONA ACCESS TOKNE}
 
 $oldReleaseTags = (
-    # "doc/8.0.0",
+    # "doc/8.0.1",
+    "doc/8.0.0",
     "doc/7.0.1",
     "doc/7.0.0",
     "doc/6.0.0-rev.2",
