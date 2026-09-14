@@ -17,26 +17,32 @@
 }
 
 <div class="clock form">
-    <div class="name">
-        <span class="caption">表示名</span>
-        <span class="input-field">
-            <input type="text" @bind="_newClock.Name" autofocus />
-        </span>
-    </div>
-    <div class="time-zone">
-        <span class="caption">タイムゾーン</span>
-        <span class="input-field">
-            <select @bind="_newClock.TimeZoneId">
-                @foreach (var zone in TimeZoneInfo.GetSystemTimeZones())
-                {
-                    <option value="@zone.Id">@zone</option>
-                }
-            </select>
-        </span>
-    </div>
-    <div class="actions">
-        <button class="button" @onclick="OnOK">OK</button>
-    </div>
+    <EditForm Model="_newClock" OnValidSubmit="OnOK">
+        <DataAnnotationsValidator />
+        <div class="name">
+            <span class="caption">表示名</span>
+            <span class="input-field">
+                <input type="text" @bind="_newClock.Name" autofocus />
+            </span>
+        </div>
+        <div class="time-zone">
+            <span class="caption">タイムゾーン</span>
+            <span class="input-field">
+                <select @bind="_newClock.TimeZoneId">
+                    @foreach (var zone in TimeZoneInfo.GetSystemTimeZones())
+                    {
+                        <option value="@zone.Id">@zone</option>
+                    }
+                </select>
+            </span>
+        </div>
+        <div class="error-message">
+            <ValidationSummary></ValidationSummary>
+        </div>
+        <div class="actions">
+            <button class="button">OK</button>
+        </div>
+    </EditForm>
 </div>
 
 @code
