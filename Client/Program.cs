@@ -8,6 +8,11 @@ builder.RootComponents.Add<App>("#app");
 builder.RootComponents.Add<HeadOutlet>("head::after");
 
 builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
+
+#if USE_LOCAL_STORAGE
+builder.Services.AddScoped<IClockService, LocalStorageClockService>();
+#else
 builder.Services.AddScoped<IClockService, ClockService>();
+#endif
 
 await builder.Build().RunAsync();
