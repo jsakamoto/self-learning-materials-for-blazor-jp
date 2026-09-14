@@ -19,8 +19,8 @@
 {
     private IEnumerable<Clock> _clocks = [];
 
-    protected override void OnInitialized()
+    protected override async Task OnInitializedAsync()
     {
-        _clocks = this.ClockService.GetClocks();
+        _clocks = await this.ClockService.GetClocksAsync();
     }
 }
