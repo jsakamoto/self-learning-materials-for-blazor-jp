@@ -3,7 +3,7 @@
 @using System.Timers
 
 @implements IDisposable
-@inject ClockService ClockService
+@inject IClockService ClockService
 @inject NavigationManager NavigationManager
 
 @foreach (var clock in _clocks)

@@ -3,7 +3,7 @@ using BlazorWorldClock.Shared;
 
 namespace BlazorWorldClock.Client;
 
-public class ClockService(HttpClient httpClient)
+public class ClockService(HttpClient httpClient) : IClockService
 {
     public async ValueTask<IEnumerable<Clock>> GetClocksAsync()
     {
