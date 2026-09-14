@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="Server\BlazorWorldClock.Server.csproj" />
+  <Project Path="Client\BlazorWorldClock.Client.csproj" />
+  <Project Path="Shared\BlazorWorldClock.Shared.csproj" />
+</Solution>

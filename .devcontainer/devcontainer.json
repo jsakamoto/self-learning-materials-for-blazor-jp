@@ -1,0 +1,24 @@
+{
+  "name": "Blazor WebAssembly Hosted (.NET 10)",
+  "image": "mcr.microsoft.com/devcontainers/base:debian",
+  "features": {
+    "ghcr.io/devcontainers/features/dotnet:2": {
+      "version": "10.0.401"
+    }
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-dotnettools.csharp"
+      ]
+    }
+  },
+  "forwardPorts": [5059],
+  "portsAttributes": {
+    "5059": {
+      "label": "Blazor Server (http)",
+      "onAutoForward": "openBrowser"
+    }
+  },
+  "postCreateCommand": "dotnet restore"
+}
