@@ -1,0 +1,21 @@
+﻿<div class="clock">
+    <div class="name">
+        <span class="value">@_clock.Name</span>
+    </div>
+    <div class="current-time">
+        <span class="value">@_clock.GetCurrentTime().ToString("MM/dd HH:mm:ss")</span>
+    </div>
+    <div class="time-zone">
+        <span class="caption">タイムゾーン</span>
+        <span class="value">@_clock.TimeZoneId</span>
+    </div>
+</div>
+
+@code
+{
+    private Clock _clock = new()
+        {
+            Name = "札幌",
+            TimeZoneId = "Asia/Tokyo"
+        };
+}
