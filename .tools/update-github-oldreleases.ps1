@@ -1,68 +1,24 @@
 # This script updates the release notes of old releases on GitHub.
 
-# This script requires "hub" command is installed.
-# "hub" command ... https://github.com/github/hub
+# This script requires "gh" command (GitHub CLI) is installed.
+# "gh" command ... https://cli.github.com/
 
-# This script requires the following configuration in "~/.config/hub" file, like below:
+# Sign in with an account that has write access to this repository, by "gh auth login".
+# If you have signed in with multiple accounts, switch the active account by "gh auth switch".
 
-# github.com:
-# - protocol: https
-#  user: {USER NAME}
-#  oauth_token: {PERSONA ACCESS TOKNE}
-
-$oldReleaseTags = (
-    # "doc/8.0.1",
-    "doc/8.0.0",
-    "doc/7.0.1",
-    "doc/7.0.0",
-    "doc/6.0.0-rev.2",
-    "doc/6.0.0",
-    "doc/6.0.0-rc.2",
-    "doc/5.0b",
-    "doc/5.0",
-    "doc/3.2.0b",
-    "doc/3.2.0",
-    "doc/3.2.0-rc1.20223.4",
-    "doc/3.2.0-preview5.20216.8",
-    "doc/3.2.0-preview4.20210.8",
-    "doc/3.2.0-preview3.20168.3",
-    "doc/3.2.0-preview1.20073.1b",
-    "doc/3.2.0-preview1.20073.1",
-    "doc/3.0.0-preview9.19457.4",
-    "doc/3.0.0-preview9",
-    "doc/3.0.0-preview8",
-    "doc/3.0.0-preview7",
-    "doc/3.0.0-preview6",
-    "doc/3.0.0-preview5",
-    "doc/3.0.0-preview4",
-    "doc/0.9.0d",
-    "doc/0.9.0",
-    "doc/0.8.0",
-    "doc/0.7.0",
-    "doc/0.6.0",
-    "doc/0.5.1",
-    "doc/0.4.0",
-    "doc/0.3.0-b-2",
-    "0.3.0-b",
-    "0.3.0")
+# The tag of the release that old releases should refer to. It is excluded from the update.
+$latestRelease = "10.0.0"
+$latestReleaseTag = "doc/$latestRelease"
+$oldReleaseDoc = "### Blazor v.$latestRelease に対応した [$latestRelease](https://github.com/jsakamoto/self-learning-materials-for-blazor-jp/releases/tag/doc%2F$latestRelease) をリリースしています。そちらをご利用ください。"
 
 $rootDir = Join-Path $PSScriptRoot ".." -Resolve
 Push-Location $rootDir
 
-$oldReleaseDoc = Get-Content .\src\old-release-document.md -Encoding UTF8
-$utf8 = New-Object "System.Text.UTF8Encoding" -ArgumentList @($false)
-$tmpPath = (Resolve-Path .\src).Path + "\~tmp.md"
+$oldReleaseTags = gh release list -L 100 --json tagName --jq '.[].tagName' | Where-Object { $_ -ne $latestReleaseTag }
 
 $oldReleaseTags | ForEach-Object {
     Write-Host -ForegroundColor Yellow ("Processing `"{0}`"..." -f $_)
-    $oldReleaseTag = $_
-    $oldReleaseTitle = $oldReleaseTag -replace "^doc/", ""
-    
-    [IO.File]::WriteAllLines($tmpPath, ($oldReleaseTitle, "", $oldReleaseDoc), $utf8)
-    
-    hub release edit $oldReleaseTag -F $tmpPath
+    gh release edit $_ --notes $oldReleaseDoc
 }
-
-Remove-Item $tmpPath > $null
 
 Pop-Location

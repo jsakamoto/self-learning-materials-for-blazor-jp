@@ -1,11 +1,15 @@
 ﻿# Get latest branch name which starts with "v.x.x..."
-$baseBranch = "v.8.0.1"
+$remote = "origin"
+$baseBranch = "v.10.0.0"
 
+# Fetch the latest changes from the remote repository.
+git fetch $remote
+
+# Set up the working directories.
 $rootDir = Join-Path $PSScriptRoot ".." -Resolve
 Push-Location $rootDir
-$baseDir = Join-Path $rootDir "dist" | Join-Path -ChildPath $baseBranch
-$sourceCodeDir = Join-Path $baseDir "SourceCode"
-if (-not (Test-Path $sourceCodeDir)) { mkdir $sourceCodeDir > $null }
+$baseDir = Join-Path $rootDir "dist" | Join-Path -ChildPath $baseBranch # ./dist/{v.x.x...}
+$sourceCodeDir = Join-Path $baseDir "SourceCode" # ./dist/{v.x.x...}/SourceCode
 
 $stepDirs = (
     "step-01-boilerplate",
@@ -30,31 +34,22 @@ $stepDirs = (
     "step-20-javascript-interop",
     "step-21-auto-refresh-by-timer"
 )
+$outDirs = $stepDirs | ForEach-Object { Join-Path $sourceCodeDir $_ }
 
-git checkout $baseBranch
-$stepDirs | Sort-Object -Descending | ForEach-Object {
-    $stepDir = $_
-    $outDir = (Join-Path $sourceCodeDir $stepDir) + "\"
-    if ( -not (Test-Path $outDir -PathType Container)) { 
-        Write-Output ("NOT EXISTS: " + $outDir)
-        mkdir $outDir > $null
-    }
-
-    # Write-Output $outDir
-    # Write-Output $branch
-    # Write-Output "$outDir\$stepDir"
-    git checkout-index -a --prefix $outDir
-    git checkout HEAD^
+# Extract each step from the git history as separate git worktrees.
+$step = 0
+$outDirs | Sort-Object -Descending | ForEach-Object { 
+    git worktree add $_ "$remote/$baseBranch~$step"
+    $step++
 }
 
-git checkout master
-
+# Remove .gitignore files in the SourceCode directory before creating the zip files.
 Push-Location $baseDir
-Get-ChildItem .git* -Recurse | Remove-Item
+Get-ChildItem .gitignore -Recurse | Remove-Item
 Pop-Location
 
-# Create Bolerplate Zip file.
-$boilerplateSrcPath = Join-Path $sourceCodeDir $stepDirs[0] | Join-Path -ChildPath "*"
+# Create Boilerplate Zip file.
+$boilerplateSrcPath = Join-Path $outDirs[0] "*"
 $boilerplateZipPath = Join-Path $baseDir "BlazorWorldClock-Step01-Boilerplate.zip"
 Compress-Archive $boilerplateSrcPath $boilerplateZipPath -Force
 
@@ -62,5 +57,8 @@ Compress-Archive $boilerplateSrcPath $boilerplateZipPath -Force
 $releasePackSrcPath = @($sourceCodeDir, "LICENSE", "Blazorアプリケーションプログラミング自習書-$baseBranch.pdf")
 $releasePackZipPath = Join-Path $baseDir "Self-Learning-Materials-for-Blazor-JP-$baseBranch.zip"
 Compress-Archive $releasePackSrcPath $releasePackZipPath -Force
+
+# Clean up: Remove the git worktrees after creating the zip files.
+$outDirs | ForEach-Object { git worktree remove $_ --force }
 
 Pop-Location
