@@ -14,7 +14,7 @@
 「Blazor ってどこがメリットなの?」  
 といった疑問にお答えできることを狙いとした、Blazor についての事前評価ができるような、そんな入門レベルの自習書テキストです。
 
-なお、本書が対象としている Blazor のバージョンは v.8.0 です。  
+なお、本書が対象としている Blazor のバージョンは v.10.0 です。  
 (GitHub リポジトリには、本書の旧バージョン対応版も履歴に含まれています)
 
 
@@ -36,11 +36,11 @@
 
 自習書テキストは PDF ファイルとして提供しており、下記リンクから参照できます。
 
-- [📒 Blazorアプリケーションプログラミング自習書-v.8.0.1.pdf](https://jsakamoto.github.io/self-learning-materials-for-blazor-jp/Blazor%E3%82%A2%E3%83%97%E3%83%AA%E3%82%B1%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%9F%E3%83%B3%E3%82%B0%E8%87%AA%E7%BF%92%E6%9B%B8-v.8.0.1.pdf)
+- [📒 Blazorアプリケーションプログラミング自習書-v.10.0.0.pdf](https://jsakamoto.github.io/self-learning-materials-for-blazor-jp/Blazor%E3%82%A2%E3%83%97%E3%83%AA%E3%82%B1%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%9F%E3%83%B3%E3%82%B0%E8%87%AA%E7%BF%92%E6%9B%B8-v.10.0.0.pdf)
 
 この自習書テキストに沿って作業を進めることで、**Blazor WebAssembly プログラミングの主だった構成要素を習得・体験**しつつ、**IDE 支援がどのように役立つか**も体験することができます。
 
-また、本リポジトリの [v.8.0.1 ブランチ](https://github.com/jsakamoto/self-learning-materials-for-blazor-jp/commits/v.8.0.1)には、自習書テキストで解説している 1 ステップを 1 コミットとして履歴を記録したソースコードが収録されています。  
+また、本リポジトリの [v.10.0.0 ブランチ](https://github.com/jsakamoto/self-learning-materials-for-blazor-jp/commits/v.10.0.0)には、自習書テキストで解説している 1 ステップを 1 コミットとして履歴を記録したソースコードが収録されています。  
 適宜ご参照ください。
 
 なお、自習書テキスト PDF および 1 ステップごとのソースコードを収録した Zip ファイルを、[GitHub リポジトリの Release ページ](https://github.com/jsakamoto/self-learning-materials-for-blazor-jp/releases)からダウンロードできます。  
@@ -60,7 +60,8 @@
 - C# によるプログラミングの知識がある
 - 加えて ASP.NET Core によるサーバーサイド Web アプリケーション開発の知識があるとなお可
 
-> ※ Angular, React, Vue などといった JavaScript SPA フレームワークの知識・経験は必ずしも必要としないことと考えていますが、もし何かしら SPA フレームワークの知識・経験があれば、Blazor の理解にも役立つと思います。
+> [!NOTE]  
+> Angular, React, Vue などといった JavaScript SPA フレームワークの知識・経験は必ずしも必要としないことと考えていますが、もし何かしら SPA フレームワークの知識・経験があれば、Blazor の理解にも役立つと思います。
 
 
 🛠️ 必要な開発環境
@@ -70,7 +71,7 @@
 
 本稿執筆時点で、本自習書による Blazor 開発を実践するにあたり、最低限必要な開発環境は下記のとおりです。
 
-- [.NET 8.0 SDK (8.0.100 かそれ以降)](https://dotnet.microsoft.com/download/dotnet-core/8.0)
+- [.NET 10.0 SDK (10.0.401 かそれ以降)](https://dotnet.microsoft.com/download/dotnet-core/10.0)
 - 上記 SDK が対応しているデスクトップ OS (Windows, macOS, 各種 Linux ディストリビューション)
 - 何らかのテキストエディタ/コードエディタ
 - インターネット接続
@@ -84,12 +85,12 @@
 
 下記リンクをクリックすると、.NET SDK のインストールも既に済んでいる、本自習書のステップ 1 の GitHub Codespaces による開発環境が Web ブラウザで開きます。
 
-[![GitHub Codespaces で開く](https://github.com/codespaces/badge.svg)](https://github.com/codespaces/new/jsakamoto/self-learning-materials-for-blazor-jp/tree/boilerplate%2Fv.8.0.1?quickstart=1)
+[![GitHub Codespaces で開く](https://github.com/codespaces/badge.svg)](https://github.com/codespaces/new/jsakamoto/self-learning-materials-for-blazor-jp/tree/boilerplate%2Fv.10.0.0?quickstart=1)
 
-詳細は[自習書テキスト PDF](https://jsakamoto.github.io/self-learning-materials-for-blazor-jp/Blazor%E3%82%A2%E3%83%97%E3%83%AA%E3%82%B1%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%9F%E3%83%B3%E3%82%B0%E8%87%AA%E7%BF%92%E6%9B%B8-v.8.0.1.pdf) の「開発環境」の章をご参照ください。
+詳細は[自習書テキスト PDF](https://jsakamoto.github.io/self-learning-materials-for-blazor-jp/Blazor%E3%82%A2%E3%83%97%E3%83%AA%E3%82%B1%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%9F%E3%83%B3%E3%82%B0%E8%87%AA%E7%BF%92%E6%9B%B8-v.10.0.0.pdf) の「開発環境」の章をご参照ください。
 
 > [!NOTE]  
-> GitHub Codespaces は最長 60 分/月の無料枠がある有償サービスです。料金体系について詳しくは[公式サイト](https://github.co.jp/features/codespaces)を参照ください。
+> GitHub Codespaces は最長 2コア x 60 分/月の無料枠がある有償サービスです。料金体系について詳しくは[公式サイト](https://github.co.jp/features/codespaces)を参照ください。
 
 ### Visual Studio Code を使う
 
@@ -102,21 +103,21 @@
 > [!NOTE]  
 > C# Dev Kit 拡張の利用にあたっては、Visual Studio 相当の使用条件があります。
 
-### Windows 上で Visual Studio 2022 を使う
+### Windows 上で Visual Studio 2026 を使う
 
 Windows PC をお使いの場合は、統合開発環境である Visual Studio の使用もお勧めです。
 
-- [Visual Studio 2022 - 17.8.0 以降](https://visualstudio.microsoft.com/vs/)
+- [Visual Studio 2026 - 18.10.0 以降](https://visualstudio.microsoft.com/vs/)
     - "ASP.NET と Web 開発" ワークロードが選択されていること
 
 > [!NOTE]  
-> ※1 - Visual Studio 2022 は、無償利用可能な (但しライセンス条項に違反しない場合) Community Edition で可。  
+> ※1 - Visual Studio 2026 は、無償利用可能な (但しライセンス条項に違反しない場合) Community Edition で可。  
 > ※2 - Visual Studio は、複数のバージョンやインスタンスを、ひとつの OS 上に互いの干渉なくいくつもインストールして使用することが可能です。
 
  🤔 自習書作成の背景
 ----------------------------------------
 
-Blazor は、SPA を含めた各種 Web アプリケーション開発のシーンにおいて、もちろん決して ["銀の弾丸"](https://kotobank.jp/word/%E9%8A%80%E3%81%AE%E5%BC%BE%E4%B8%B8-248402) ではありません。  
+Blazor は、SPA を含めた各種 Web アプリケーション開発のシーンにおいて、もちろん決して ["銀の弾丸"](https://ja.wikipedia.org/wiki/%E9%8A%80%E3%81%AE%E5%BC%BE%E3%81%AA%E3%81%A9%E3%81%AA%E3%81%84) ではありません。  
 しかしながら Blazor は、適合する案件や開発者であれば、**開発の負担を減らし、よりよい生産性向上をもたらす可能性**を秘めています。
 
 そこでこの Blazor の可能性をより多くの開発者に体験していただき、Blazor WebAssembly を事前評価していただければと考え、この「Blazor WebAssembly アプリケーションプログラミング自習書 (自習教材)」を作成しました。
